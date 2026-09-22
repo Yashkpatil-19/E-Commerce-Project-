@@ -1,0 +1,82 @@
+[
+  {
+    "id": "on",
+    "name": "Optimum Nutrition",
+    "shortName": "ON",
+    "origin": "USA",
+    "badge": "Informed-Choice Certified",
+    "trustSeal": "Ultra Verified",
+    "logo": "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=200&q=80",
+    "description": "Global leader in sports nutrition and trusted maker of the world's #1 selling Gold Standard Whey and Micronized Creatine."
+  },
+  {
+    "id": "muscleblaze",
+    "name": "MuscleBlaze",
+    "shortName": "MB",
+    "origin": "India",
+    "badge": "Labdoor USA Certified",
+    "trustSeal": "Ultra Verified",
+    "logo": "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=200&q=80",
+    "description": "Pioneering Enhanced Absorption Formula (EAF®) and Creapure creatine, rigorously third-party tested by Labdoor USA."
+  },
+  {
+    "id": "dymatize",
+    "name": "Dymatize",
+    "shortName": "Dymatize",
+    "origin": "USA",
+    "badge": "NSF Certified for Sport",
+    "trustSeal": "Ultra Verified",
+    "logo": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=200&q=80",
+    "description": "Olympic and pro athlete standard hydrolyzed whey isolate and amino acid matrices tested for 200+ banned substances."
+  },
+  {
+    "id": "fastandup",
+    "name": "Fast&Up",
+    "shortName": "Fast&Up",
+    "origin": "Switzerland / India",
+    "badge": "Informed Sport UK Certified",
+    "trustSeal": "Ultra Verified",
+    "logo": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=200&q=80",
+    "description": "Swiss effervescent and clean plant nutrition delivering rapid absorption, vegan omega-3s, and electrolyte hydration."
+  },
+  {
+    "id": "myprotein",
+    "name": "Myprotein",
+    "shortName": "Myprotein",
+    "origin": "UK",
+    "badge": "Labdoor A-Grade Europe",
+    "trustSeal": "Ultra Verified",
+    "logo": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=200&q=80",
+    "description": "Europe's leading nutritional brand with Grade-A protein purity, pharmaceutical micronized creatine, and clean plant isolates."
+  },
+  {
+    "id": "muscletech",
+    "name": "MuscleTech",
+    "shortName": "MuscleTech",
+    "origin": "USA",
+    "badge": "America's #1 Selling Brand",
+    "trustSeal": "Ultra Verified",
+    "logo": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=200&q=80",
+    "description": "Backed by university clinical studies and multi-patented formulas including Platinum Micronized Creatine and NitroTech."
+  },
+  {
+    "id": "truebasics",
+    "name": "TrueBasics",
+    "shortName": "TrueBasics",
+    "origin": "India / USA",
+    "badge": "USP-Grade Pure Omegas",
+    "trustSeal": "Ultra Verified",
+    "logo": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=200&q=80",
+    "description": "Clinical grade daily multivitamin capsules, molecularly distilled triple-strength fish oil, and certified heavy-metal free softgels."
+  },
+  {
+    "id": "gnc",
+    "name": "GNC Pro Performance",
+    "shortName": "GNC",
+    "origin": "USA",
+    "badge": "Certified Banned Substance Free",
+    "trustSeal": "Ultra Verified",
+    "logo": "https://images.unsplash.com/photo-1579722820308-d74e571900a9?auto=format&fit=crop&w=200&q=80",
+    "description": "85+ years of clinical supplement leadership, manufacturing pharmaceutical-grade fish oil softgels and micronized creatine."
+  }
+]

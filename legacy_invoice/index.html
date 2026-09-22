@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Invoice Maker Studio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2pdf.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col">
+
+    <!-- Top Dashboard Header (no-print) -->
+    <header class="no-print bg-brand-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-600 p-2 rounded-lg text-white shadow-inner">
+                    <i class="fa-solid fa-file-invoice-dollar text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight">Invoice Maker Studio</h1>
+                    <p class="text-xs text-slate-400">Generate professional Indian Rupee (₹) invoices</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-2">
+                <button id="btn-sample" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium rounded-lg border border-slate-700 transition-all-300 flex items-center gap-2">
+                    <i class="fa-solid fa-database"></i> Load Sample Data
+                </button>
+                <button id="btn-clear" class="px-4 py-2 bg-slate-800 hover:bg-red-900/40 text-red-400 hover:text-red-300 text-sm font-medium rounded-lg border border-slate-700 hover:border-red-800/80 transition-all-300 flex items-center gap-2">
+                    <i class="fa-solid fa-trash-can"></i> Clear
+                </button>
+                <button id="btn-preview" class="lg:hidden px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-all-300 flex items-center gap-2">
+                    <i class="fa-solid fa-eye"></i> View Preview
+                </button>
+                <button id="btn-download" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-all-300 shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-file-pdf"></i> Download PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Tabs (no-print) -->
+    <div class="no-print lg:hidden bg-white border-b border-gray-200 sticky top-[72px] z-40">
+        <div class="flex">
+            <button id="tab-edit" class="flex-1 py-3 text-center text-sm font-semibold border-b-2 border-blue-600 text-blue-600 flex justify-center items-center gap-2">
+                <i class="fa-solid fa-pen-to-square"></i> Edit Details
+            </button>
+            <button id="tab-preview" class="flex-1 py-3 text-center text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 flex justify-center items-center gap-2">
+                <i class="fa-solid fa-eye"></i> Invoice Preview
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Workspace Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full flex flex-col lg:flex-row gap-6">
+        
+        <!-- Left Column: Editor Dashboard (no-print) -->
+        <section id="panel-edit" class="no-print w-full lg:w-1/2 flex flex-col gap-6">
+            
+            <!-- Company Profile -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 space-y-4">
+                <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <i class="fa-solid fa-building text-blue-600 text-lg"></i>
+                    <h2 class="font-bold text-slate-800">1. Business Details</h2>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1" for="editor-business-name">Business Name *</label>
+                        <input type="text" id="editor-business-name" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all-300 text-sm" placeholder="e.g. DURVESH SLIDING WORK">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1" for="editor-business-address">Business Address *</label>
+                        <textarea id="editor-business-address" rows="2" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all-300 text-sm" placeholder="e.g. At-Asroti, Post-Chowk, Tal-Khalapur, Dist-Raigad – 410206"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1" for="editor-business-contact">Contact Details *</label>
+                        <input type="text" id="editor-business-contact" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all-300 text-sm" placeholder="e.g. 9730168595 / 9561516411">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice Meta & Customer Details -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 space-y-4">
+                <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <i class="fa-solid fa-file-contract text-blue-600 text-lg"></i>
+                    <h2 class="font-bold text-slate-800">2. Invoice Info & Customer</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1" for="editor-invoice-number">Invoice Number *</label>
+                        <input type="text" id="editor-invoice-number" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all-300 text-sm" placeholder="e.g. DSW-2025-001">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1" for="editor-invoice-date">Invoice Date *</label>
+                        <input type="date" id="editor-invoice-date" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all-300 text-sm">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1" for="editor-customer-to">To (Customer Name / Company) *</label>
+                    <input type="text" id="editor-customer-to" class="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all-300 text-sm" placeholder="e.g. Venus Wire">
+                </div>
+            </div>
+
+            <!-- Invoice Items Table Editor -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 space-y-4">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-list-ol text-blue-600 text-lg"></i>
+                        <h2 class="font-bold text-slate-800">3. Invoice Items</h2>
+                    </div>
+                    <button type="button" id="btn-add-item" class="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-600 text-sm font-semibold rounded-lg border border-blue-200 transition-all-300 flex items-center gap-1.5">
+                        <i class="fa-solid fa-plus text-xs"></i> Add Item
+                    </button>
+                </div>
+
+                <!-- Dynamic Row Inputs Container -->
+                <div id="editor-items-container" class="space-y-3 max-h-[360px] overflow-y-auto pr-1">
+                    <!-- Dynamic rows will be inserted here by app.js -->
+                </div>
+            </div>
+
+            <!-- Bottom Modifiers (GST, Discount, Charges) -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 space-y-4">
+                <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <i class="fa-solid fa-percent text-blue-600 text-lg"></i>
+                    <h2 class="font-bold text-slate-800">4. Adjustments & Taxes <span class="text-xs font-normal text-slate-500">(Optional)</span></h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Discount Input -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1" for="editor-discount">Discount</label>
+                        <div class="flex shadow-sm rounded-lg">
+                            <input type="number" id="editor-discount" min="0" step="any" class="w-full p-2.5 border border-slate-300 rounded-l-lg border-r-0 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all-300 text-sm text-right" placeholder="0">
+                            <select id="editor-discount-type" class="p-2.5 bg-slate-50 border border-slate-300 rounded-r-lg text-sm text-slate-600 focus:outline-none border-l">
+                                <option value="flat">₹ Flat</option>
+                                <option value="percent">% Percent</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- GST Rate -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1" for="editor-tax-rate">GST/Tax Rate (%)</label>
+                        <div class="relative">
+                            <input type="number" id="editor-tax-rate" min="0" step="any" class="w-full p-2.5 pr-8 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all-300 text-sm text-right" placeholder="0">
+                            <span class="absolute right-3 top-3 text-slate-400 text-xs font-semibold">%</span>
+                        </div>
+                    </div>
+                    <!-- Additional Charges -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1" for="editor-additional-charges">Additional Charges (₹)</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-slate-400 text-xs font-semibold">₹</span>
+                            <input type="number" id="editor-additional-charges" min="0" step="any" class="w-full p-2.5 pl-7 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all-300 text-sm text-right" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Right Column: Live Invoice Preview -->
+        <section id="panel-preview" class="w-full lg:w-1/2 flex flex-col items-center justify-start hidden-mobile lg:block">
+            
+            <!-- Sticky preview toolbar (no-print) -->
+            <div class="no-print w-full max-w-[794px] mb-3 bg-white p-3 rounded-lg border border-slate-200 flex justify-between items-center text-xs text-slate-500 shadow-sm">
+                <span class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Live Preview (A4 Dimensions)
+                </span>
+                <span class="font-medium">
+                    <i class="fa-solid fa-pager"></i> Auto-Pagination Avoidance Active
+                </span>
+            </div>
+
+            <!-- A4 Export Container (This is rendered to PDF) -->
+            <div id="invoice-preview-container" class="w-full bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden p-0">
+                <div id="invoice-preview" class="a4-container">
+                    
+                    <!-- Top section flow -->
+                    <div class="flex-grow">
+                        <!-- Invoice Header -->
+                        <div class="border-b-2 border-slate-800 pb-6 mb-6">
+                            <div class="text-center">
+                                <h1 id="preview-business-name" class="invoice-title text-3xl font-extrabold text-slate-900 tracking-wide uppercase">DURVESH SLIDING WORK</h1>
+                                <p id="preview-business-address" class="text-xs text-slate-600 mt-1.5 font-medium max-w-lg mx-auto leading-relaxed">
+                                    At-Asroti, Post-Chowk, Tal-Khalapur, Dist-Raigad – 410206
+                                </p>
+                                <p class="text-xs text-slate-700 mt-1 font-semibold flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-phone text-[10px] text-slate-400"></i> Contact: <span id="preview-business-contact" class="text-slate-800">9730168595 / 9561516411</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Invoice Info Details -->
+                        <div class="grid grid-cols-2 gap-4 mb-8 text-sm">
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-1">Invoice To:</span>
+                                <div id="preview-customer-to" class="font-bold text-slate-800 text-base leading-tight">Venus Wire</div>
+                            </div>
+                            
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 flex flex-col justify-between">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Invoice No:</span>
+                                    <span id="preview-invoice-number" class="font-bold text-slate-800">DSW-2025-001</span>
+                                </div>
+                                <div class="flex justify-between items-center mt-2 pt-2 border-t border-slate-200/60">
+                                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Date:</span>
+                                    <span id="preview-invoice-date" class="font-bold text-slate-800">11/09/2025</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Items Table -->
+                        <table class="w-full table-fixed mb-8">
+                            <thead>
+                                <tr class="bg-slate-800 text-white text-xs font-semibold uppercase tracking-wider">
+                                    <th class="w-12 px-4 py-3 text-center rounded-l">Sr. No.</th>
+                                    <th class="w-1/2 px-4 py-3 text-left">Description</th>
+                                    <th class="w-16 px-4 py-3 text-right">SQRT</th>
+                                    <th class="w-16 px-4 py-3 text-right">Qty</th>
+                                    <th class="w-24 px-4 py-3 text-right font-medium">Rate</th>
+                                    <th class="w-28 px-4 py-3 text-right rounded-r">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="preview-items-container" class="divide-y divide-slate-100">
+                                <!-- Dynamic items populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bottom invoice summaries and signature footer -->
+                    <div class="page-break-avoid mt-auto pt-6 border-t border-slate-200">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
+                            
+                            <!-- Left: Terms & Optional Signatures -->
+                            <div class="md:col-span-6 space-y-4">
+                                <div class="text-[10px] text-slate-400 leading-relaxed max-w-xs">
+                                    <p class="font-bold uppercase tracking-wider text-slate-500 mb-0.5">Declaration:</p>
+                                    <p>We declare that this invoice shows the actual price of the goods/services described and that all particulars are true and correct.</p>
+                                </div>
+                                
+                                <div class="pt-4">
+                                    <div class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">YOUR FAITHFULLY</div>
+                                    <div id="preview-business-name-footer" class="text-xs font-extrabold text-slate-800 uppercase tracking-wide truncate max-w-[280px]">DURVESH SLIDING WORK</div>
+                                    
+                                    <!-- Signature Block -->
+                                    <div class="mt-8 border-t border-dashed border-slate-400 pt-1.5 w-48 text-[11px] text-slate-400 font-medium">
+                                        Authorized Signatory
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Right: Calculations Breakdown -->
+                            <div class="md:col-span-6 flex flex-col justify-end space-y-2.5 text-sm">
+                                
+                                <!-- Subtotal -->
+                                <div class="flex justify-between items-center text-slate-600 px-2">
+                                    <span class="font-medium text-slate-500">Subtotal:</span>
+                                    <span id="preview-subtotal" class="font-semibold text-slate-800">₹0.00</span>
+                                </div>
+                                
+                                <!-- Discount (Conditional) -->
+                                <div id="preview-discount-row" class="flex justify-between items-center text-slate-600 hidden px-2">
+                                    <span id="preview-discount-label" class="font-medium text-slate-500">Discount:</span>
+                                    <span id="preview-discount-value" class="font-semibold text-emerald-600">- ₹0.00</span>
+                                </div>
+                                
+                                <!-- GST (Conditional) -->
+                                <div id="preview-tax-row" class="flex justify-between items-center text-slate-600 hidden px-2">
+                                    <span id="preview-tax-label" class="font-medium text-slate-500">GST/Tax:</span>
+                                    <span id="preview-tax-value" class="font-semibold text-slate-800">₹0.00</span>
+                                </div>
+                                
+                                <!-- Additional Charges (Conditional) -->
+                                <div id="preview-charges-row" class="flex justify-between items-center text-slate-600 hidden px-2">
+                                    <span class="font-medium text-slate-500">Additional Charges:</span>
+                                    <span id="preview-charges-value" class="font-semibold text-slate-800">₹0.00</span>
+                                </div>
+                                
+                                <!-- Grand Total -->
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 flex justify-between items-center">
+                                    <span class="font-bold text-slate-700 uppercase tracking-wide text-xs">Grand Total:</span>
+                                    <span id="preview-grand-total" class="text-xl font-extrabold text-blue-700 tracking-tight transition-all-300">₹0.00</span>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="no-print mt-auto py-6 bg-slate-900 border-t border-slate-800 text-center text-xs text-slate-500">
+        <p>&copy; 2026 Invoice Maker Studio. All rights reserved. Created with Antigravity.</p>
+    </footer>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

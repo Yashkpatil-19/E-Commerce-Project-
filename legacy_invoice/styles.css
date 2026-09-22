@@ -1,0 +1,107 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+/* Custom Scrollbar for Dashboard Panels */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Realistic A4 Page Styling for Live Preview */
+.a4-container {
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 794px; /* A4 standard width in pixels at 96 DPI */
+    min-height: 1123px; /* A4 standard height in pixels at 96 DPI */
+    padding: 15mm 20mm;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Invoice Header and Section Typography */
+.invoice-title {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Interactive animations */
+.transition-all-300 {
+    transition: all 0.3s ease;
+}
+
+/* Number Inputs: Hide Arrows/Spinners */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Highlight Animation for calculation updates */
+@keyframes highlight-glow {
+    0% { background-color: rgba(59, 130, 246, 0.2); }
+    100% { background-color: transparent; }
+}
+.calc-update {
+    animation: highlight-glow 0.8s ease-out;
+}
+
+/* Print Specific Styles */
+@media print {
+    body {
+        background-color: #ffffff;
+        color: #000000;
+        font-size: 12pt;
+    }
+    
+    /* Hide editor dashboard and top bar */
+    .no-print {
+        display: none !important;
+    }
+    
+    /* Reset A4 Container for standard A4 printing page size */
+    .a4-container {
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important;
+        height: auto !important;
+    }
+
+    /* Page breaks */
+    .page-break-avoid {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}
+
+/* Responsive View Handling on Small Screens */
+@media (max-width: 1023px) {
+    .hidden-mobile {
+        display: none !important;
+    }
+}
