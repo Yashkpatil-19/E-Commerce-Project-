@@ -127,7 +127,15 @@ export const OrderConfirmationScreen: React.FC = () => {
             {order.items.map((item, idx) => (
               <div key={idx} className="flex items-center gap-3 p-2.5 bg-slate-50 rounded-xl">
                 <div className="w-14 h-14 bg-white rounded-xl p-1.5 border border-slate-100 flex items-center justify-center flex-shrink-0">
-                  <img src={item.product.image} alt={item.product.name} className="w-full h-full object-contain" />
+                  <img
+                    src={item.product.image}
+                    alt={item.product.name}
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.currentTarget.src = '/products/fallback.svg';
+                    }}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h4 className="font-bold text-slate-900 text-xs sm:text-sm truncate">{item.product.name}</h4>

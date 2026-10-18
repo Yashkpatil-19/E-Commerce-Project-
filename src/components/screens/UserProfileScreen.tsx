@@ -18,7 +18,11 @@ import {
   ChevronRight,
   ExternalLink,
   ShoppingBag,
-  RefreshCw
+  RefreshCw,
+  Calendar,
+  Dumbbell,
+  Award,
+  MessageSquare
 } from 'lucide-react';
 import { OrderStatus, TargetGoal, TargetDiet, ActivityLevel } from '../../types';
 
@@ -34,10 +38,12 @@ export const UserProfileScreen: React.FC = () => {
     verifiedCodes,
     navigateTo, 
     openAuthModal,
-    openAssessment
+    openAssessment,
+    appointmentRequests,
+    coaches
   } = useApp();
 
-  const [activeTab, setActiveTab] = useState<'orders' | 'profile' | 'verified'>('orders');
+  const [activeTab, setActiveTab] = useState<'orders' | 'profile' | 'appointments' | 'verified'>('orders');
 
   // Profile edit state
   const [editAge, setEditAge] = useState(profile.age);
@@ -203,6 +209,18 @@ export const UserProfileScreen: React.FC = () => {
           </button>
 
           <button
+            onClick={() => setActiveTab('appointments')}
+            className={`px-4 py-2 rounded-xl transition-all flex items-center gap-2 ${
+              activeTab === 'appointments'
+                ? 'bg-emerald-600 text-white shadow-emerald'
+                : 'text-slate-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <Calendar className="w-4 h-4" />
+            <span>My Appointments ({appointmentRequests.filter(r => r.userId === currentUser.id || r.userId === 'guest-user').length})</span>
+          </button>
+
+          <button
             onClick={() => setActiveTab('verified')}
             className={`px-4 py-2 rounded-xl transition-all flex items-center gap-2 ${
               activeTab === 'verified'
@@ -342,6 +360,10 @@ export const UserProfileScreen: React.FC = () => {
                               <img 
                                 src={item.product.image} 
                                 alt={item.product.name} 
+                                referrerPolicy="no-referrer"
+                                onError={(e) => {
+                                  e.currentTarget.src = '/products/fallback.svg';
+                                }}
                                 className="w-full h-full object-contain"
                               />
                             </div>
@@ -441,6 +463,36 @@ export const UserProfileScreen: React.FC = () => {
             </button>
           </div>
 
+          {/* Muscle Gain Journey Recommendation Banner */}
+          <div className="rounded-2xl bg-gradient-to-r from-emerald-950 via-slate-900 to-teal-950 p-5 text-white border border-emerald-800/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-soft">
+            <div className="space-y-1 max-w-lg">
+              <div className="flex items-center gap-2">
+                <span className="text-xl">💪</span>
+                <h3 className="font-black text-sm text-white">Target Objective: Muscle Gain (Hypertrophy)</h3>
+                <span className="text-[10px] font-bold bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-400/30">
+                  Recommended
+                </span>
+              </div>
+              <p className="text-xs text-slate-300">
+                Calibrated for your {profile.weight}kg body weight. Access customized progressive resistance routines and track daily caloric expenditure.
+              </p>
+            </div>
+
+            <a
+              href="/fitness-journey?plan=build-muscle"
+              onClick={(e) => {
+                e.preventDefault();
+                if (typeof window !== 'undefined') {
+                  window.history.pushState({}, '', '/fitness-journey?plan=build-muscle');
+                }
+                navigateTo('fitness-journey');
+              }}
+              className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs whitespace-nowrap shadow-emerald flex items-center gap-1.5 transition-all cursor-pointer active:scale-98"
+            >
+              <span>Start Your Muscle Gain Journey →</span>
+            </a>
+          </div>
+
           {profileSavedNotice && (
             <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center gap-3 text-xs text-emerald-900 animate-fade-in">
               <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
@@ -527,6 +579,115 @@ export const UserProfileScreen: React.FC = () => {
               <span>Update Nutrition Profile</span>
             </button>
           </form>
+        </div>
+      )}
+
+      {/* ─── TAB: MY APPOINTMENTS ─── */}
+      {activeTab === 'appointments' && (
+        <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-soft space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+            <div>
+              <h2 className="text-lg font-black text-slate-950">My Coach Consultations</h2>
+              <p className="text-xs text-slate-500">Live booking status and schedule with verified fitness mentors</p>
+            </div>
+            <button
+              onClick={() => navigateTo('fitness-journey')}
+              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl shadow-emerald flex items-center gap-1.5 self-start sm:self-auto"
+            >
+              <Calendar className="w-3.5 h-3.5" />
+              <span>Book New Consultation</span>
+            </button>
+          </div>
+
+          {appointmentRequests.filter(r => r.userId === currentUser.id || r.userId === 'guest-user').length === 0 ? (
+            <div className="text-center py-12 px-4 rounded-2xl bg-slate-50 border border-dashed border-slate-200 space-y-3">
+              <Calendar className="w-10 h-10 text-slate-300 mx-auto" />
+              <h4 className="font-bold text-slate-800 text-sm">No consultation requests yet</h4>
+              <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                Explore verified coaches at the bottom of your Fitness Journey and request personalized guidance.
+              </p>
+              <button
+                onClick={() => navigateTo('fitness-journey')}
+                className="mt-2 px-4 py-2 bg-slate-900 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl transition-colors"
+              >
+                Explore Coaches →
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {appointmentRequests
+                .filter(r => r.userId === currentUser.id || r.userId === 'guest-user')
+                .map((apt) => {
+                  const coach = coaches.find(c => c.id === apt.coachId) || coaches[0];
+
+                  return (
+                    <div
+                      key={apt.id}
+                      className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                    >
+                      <div className="flex items-start gap-3.5">
+                        <img
+                          src={coach?.photo}
+                          alt={coach?.name}
+                          referrerPolicy="no-referrer"
+                          onError={(e) => {
+                            e.currentTarget.src = '/purepro-logo.png';
+                          }}
+                          className="w-12 h-12 rounded-xl object-cover border border-emerald-300 flex-shrink-0"
+                        />
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-2">
+                            <h4 className="font-black text-slate-900 text-sm">{coach?.name}</h4>
+                            <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${
+                              apt.status === 'Confirmed'
+                                ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                                : apt.status === 'Declined'
+                                ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                                : 'bg-amber-100 text-amber-900 border border-amber-300'
+                            }`}>
+                              {apt.status === 'Confirmed' ? '✓ Confirmed' : apt.status === 'Declined' ? 'Declined' : 'Pending Coach Review'}
+                            </span>
+                          </div>
+
+                          <div className="text-xs text-slate-600 font-medium flex items-center gap-3">
+                            <span className="flex items-center gap-1 font-bold text-slate-800">
+                              <Calendar className="w-3.5 h-3.5 text-emerald-600" />
+                              {apt.date}
+                            </span>
+                            <span>•</span>
+                            <span className="flex items-center gap-1 font-bold text-slate-800">
+                              <Clock className="w-3.5 h-3.5 text-emerald-600" />
+                              {apt.time}
+                            </span>
+                            <span>•</span>
+                            <span className="uppercase text-slate-500 text-[11px]">
+                              {apt.planId.replace('-', ' ')}
+                            </span>
+                          </div>
+
+                          {apt.message && (
+                            <p className="text-xs text-slate-500 italic mt-1 bg-white p-2 rounded-lg border border-slate-100 max-w-lg">
+                              &ldquo;{apt.message}&rdquo;
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="sm:self-center">
+                        {apt.status === 'Confirmed' ? (
+                          <div className="text-right">
+                            <span className="text-[11px] font-bold text-emerald-700 block">Slot Confirmed</span>
+                            <span className="text-[10px] text-slate-400">Meeting link shared</span>
+                          </div>
+                        ) : (
+                          <span className="text-[11px] text-slate-400">Awaiting coach confirmation</span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+          )}
         </div>
       )}
 

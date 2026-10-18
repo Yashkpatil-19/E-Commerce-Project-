@@ -16,7 +16,9 @@ import {
   CheckCircle,
   Sliders,
   Star,
-  BadgeCheck
+  BadgeCheck,
+  Dumbbell,
+  Target
 } from 'lucide-react';
 import brandsData from '../../data/brands.json';
 
@@ -177,6 +179,129 @@ export const HomeScreen: React.FC = () => {
         </div>
       </section>
 
+      {/* ─── SHOP BY GOAL & FITNESS JOURNEY ─── */}
+      <section className="space-y-4">
+        <div className="border-b border-slate-200 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <div className="flex items-center gap-2">
+              <h2 className="font-black text-slate-950 text-xl tracking-tight">Shop by Goal</h2>
+              <span className="text-[10px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">
+                Interactive Training
+              </span>
+            </div>
+            <p className="text-xs text-slate-500 font-medium mt-0.5">
+              Select your personal fitness target to explore matched protein stacks and dynamic workout regimens.
+            </p>
+          </div>
+
+          <button 
+            onClick={() => navigateTo('fitness-journey')}
+            className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 self-start sm:self-auto"
+          >
+            <span>All Fitness Journeys</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Muscle Gain Card */}
+          <div className="bg-gradient-to-br from-emerald-950 via-slate-950 to-teal-950 text-white p-6 rounded-3xl border border-emerald-800/40 shadow-soft flex flex-col justify-between space-y-4 relative overflow-hidden group">
+            <div className="space-y-2 relative z-10">
+              <div className="flex items-center justify-between">
+                <span className="text-3xl p-2.5 rounded-2xl bg-white/10 backdrop-blur-md">💪</span>
+                <span className="text-[10px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 px-2 py-0.5 rounded-md border border-emerald-400/30">
+                  Most Popular
+                </span>
+              </div>
+              <h3 className="text-lg font-black text-white">Muscle Gain (Hypertrophy)</h3>
+              <p className="text-xs text-slate-300 leading-relaxed font-medium">
+                Engineered for maximum mechanical tension, clean caloric surplus, and fast post-workout myofibrillar protein synthesis.
+              </p>
+            </div>
+
+            <div className="pt-2 relative z-10">
+              <a
+                href="/fitness-journey?plan=build-muscle"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (typeof window !== 'undefined') {
+                    window.history.pushState({}, '', '/fitness-journey?plan=build-muscle');
+                  }
+                  navigateTo('fitness-journey');
+                }}
+                className="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-emerald shadow-sm transition-all active:scale-98 cursor-pointer"
+              >
+                <span>Start Your Muscle Gain Journey →</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Weight Loss Card */}
+          <div className="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-soft flex flex-col justify-between space-y-4 hover:border-emerald-300 transition-all">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-3xl p-2.5 rounded-2xl bg-amber-50">🔥</span>
+                <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md">
+                  Metabolic Fat Burn
+                </span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900">Weight Loss & Definition</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                High-cadence interval training, elevated thermogenic output, and low-carb whey isolate formulations.
+              </p>
+            </div>
+
+            <div className="pt-2">
+              <a
+                href="/fitness-journey?plan=weight-loss"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (typeof window !== 'undefined') {
+                    window.history.pushState({}, '', '/fitness-journey?plan=weight-loss');
+                  }
+                  navigateTo('fitness-journey');
+                }}
+                className="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              >
+                <span>Start Weight Loss Journey →</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Get Fit Card */}
+          <div className="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-soft flex flex-col justify-between space-y-4 hover:border-emerald-300 transition-all">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-3xl p-2.5 rounded-2xl bg-blue-50">🏃</span>
+                <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md">
+                  All-Round Vitality
+                </span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900">Get Fit & Functional</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Core stability, cardiovascular stamina, joint mobility, and balanced multivitamin daily nourishment.
+              </p>
+            </div>
+
+            <div className="pt-2">
+              <a
+                href="/fitness-journey?plan=get-fit"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (typeof window !== 'undefined') {
+                    window.history.pushState({}, '', '/fitness-journey?plan=get-fit');
+                  }
+                  navigateTo('fitness-journey');
+                }}
+                className="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              >
+                <span>Start Fitness Journey →</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 100% Ultra-Verified Authorized Brand Partners */}
       <section className="space-y-4">
         <div className="border-b border-slate-200 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -215,7 +340,15 @@ export const HomeScreen: React.FC = () => {
               </div>
 
               <div className="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden my-1 group-hover:scale-105 transition-transform p-1">
-                <img src={brand.logo} alt={brand.name} className="w-full h-full object-cover rounded-xl" />
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = '/purepro-logo.png';
+                  }}
+                  className="w-full h-full object-cover rounded-xl"
+                />
               </div>
               <h4 className="font-bold text-slate-900 text-sm mt-1">{brand.name}</h4>
               <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full mt-1.5 border border-emerald-200/60 line-clamp-1">

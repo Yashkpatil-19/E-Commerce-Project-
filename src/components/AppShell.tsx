@@ -14,6 +14,11 @@ import { CheckoutScreen } from './screens/CheckoutScreen';
 import { OrderConfirmationScreen } from './screens/OrderConfirmationScreen';
 import { ProfileSetupScreen } from './screens/ProfileSetupScreen';
 import { UserProfileScreen } from './screens/UserProfileScreen';
+import { FitnessJourneyScreen } from './screens/FitnessJourneyScreen';
+import { CoachOnboardScreen } from './screens/CoachOnboardScreen';
+import { CoachDashboardScreen } from './screens/CoachDashboardScreen';
+import { AdminCoachesScreen } from './screens/AdminCoachesScreen';
+import { GuessingGameScreen } from './screens/GuessingGameScreen';
 import { AuthModal } from './AuthModal';
 import { AssessmentQuizModal } from './AssessmentQuizModal';
 import { ScreenType } from '../types';
@@ -51,6 +56,16 @@ export const AppShell: React.FC<AppShellProps> = ({ initialScreen }) => {
         return <ProfileSetupScreen />;
       case 'profile':
         return <UserProfileScreen />;
+      case 'fitness-journey':
+        return <FitnessJourneyScreen />;
+      case 'coach-onboard':
+        return <CoachOnboardScreen />;
+      case 'coach-dashboard':
+        return <CoachDashboardScreen />;
+      case 'admin-coaches':
+        return <AdminCoachesScreen />;
+      case 'game':
+        return <GuessingGameScreen />;
       default:
         return <HomeScreen />;
     }

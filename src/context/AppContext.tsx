@@ -15,10 +15,19 @@ import {
   TargetDiet,
   PendingCartAction,
   OrderStatus,
-  PaymentStatus
+  PaymentStatus,
+  UserRole,
+  SubscriptionPlan,
+  CoachStatus,
+  PlanId,
+  WorkoutSession,
+  Coach,
+  AppointmentRequest,
+  CoachApplication
 } from '../types';
 import productsDataRaw from '../data/products.json';
 import scratchCodesDataRaw from '../data/scratchCodes.json';
+import coachesDataRaw from '../data/coaches.json';
 import { scoreAndFilterProducts } from '../utils/scoring';
 import { insforge } from '../lib/insforge';
 
@@ -42,9 +51,33 @@ interface AppContextType {
   pendingAction: PendingCartAction | null;
   openAuthModal: (reason?: string) => void;
   closeAuthModal: () => void;
-  login: (email: string, password?: string, name?: string) => Promise<{ success: boolean; error?: string }>;
-  signup: (name: string, email: string, password?: string, goal?: TargetGoal, diet?: TargetDiet) => Promise<{ success: boolean; error?: string }>;
+  login: (email: string, password?: string, name?: string, role?: UserRole) => Promise<{ success: boolean; error?: string }>;
+  signup: (name: string, email: string, password?: string, goal?: TargetGoal, diet?: TargetDiet, role?: UserRole) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
+  setUserAccountRole: (role: UserRole, coachStatus?: CoachStatus) => void;
+
+  // Fitness Journey & Analytics
+  workoutSessions: WorkoutSession[];
+  saveWorkoutSession: (session: Omit<WorkoutSession, 'id' | 'userId'>) => WorkoutSession;
+
+  // Freemium Gating & Upgrades
+  isPremium: boolean;
+  isUpgradeModalOpen: boolean;
+  upgradeTriggerFeature?: 'multi-plan' | 'full-analytics';
+  openUpgradeModal: (feature?: 'multi-plan' | 'full-analytics') => void;
+  closeUpgradeModal: () => void;
+  upgradeToPremium: () => void;
+
+  // Coach Marketplace & Appointments
+  coaches: Coach[];
+  appointmentRequests: AppointmentRequest[];
+  requestAppointment: (req: Omit<AppointmentRequest, 'id' | 'userId' | 'createdAt' | 'status'>) => AppointmentRequest;
+  updateAppointmentStatus: (id: string, status: 'Confirmed' | 'Declined') => void;
+
+  // Coach Onboarding & Admin Review
+  coachApplications: CoachApplication[];
+  submitCoachApplication: (app: Omit<CoachApplication, 'id' | 'status' | 'submittedDate'>) => CoachApplication;
+  reviewCoachApplication: (id: string, status: 'verified' | 'rejected') => void;
 
   // Products & Scoring
   products: Product[];
@@ -142,6 +175,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [verifiedCodes, setVerifiedCodes] = useState<VerifiedRecord[]>([]);
   const [latestOrder, setLatestOrder] = useState<Order | null>(null);
   const [isHydrated, setIsHydrated] = useState(false);
+
+  // Fitness Journey, Freemium & Coach Marketplace
+  const [workoutSessions, setWorkoutSessions] = useState<WorkoutSession[]>([]);
+  const [appointmentRequests, setAppointmentRequests] = useState<AppointmentRequest[]>([]);
+  const [coachApplications, setCoachApplications] = useState<CoachApplication[]>([]);
+  const [coaches] = useState<Coach[]>(coachesDataRaw as Coach[]);
+  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
+  const [upgradeTriggerFeature, setUpgradeTriggerFeature] = useState<'multi-plan' | 'full-analytics' | undefined>();
+
+  const isPremium = currentUser?.subscriptionPlan === 'premium';
 
   // Auth actions
   const openAuthModal = (reason?: string) => {
@@ -274,7 +317,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   // 1. Authentication with InsForge
-  const login = async (email: string, password = 'Password@123', name?: string) => {
+  const login = async (email: string, password = 'Password@123', name?: string, role?: UserRole) => {
     try {
       // Attempt InsForge native auth sign in
       const { data, error } = await insforge.auth.signInWithPassword({
@@ -299,6 +342,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         id: userId || 'USR-' + Math.floor(1000 + Math.random() * 9000),
         name: userName,
         email,
+        role: role || 'customer',
+        subscriptionPlan: 'free',
+        coachStatus: role === 'coach' ? 'unverified' : undefined,
         isLoggedIn: true,
         goal: profile.goal,
         diet: profile.diet,
@@ -337,6 +383,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         id: 'USR-' + Math.floor(1000 + Math.random() * 9000),
         name: name || email.split('@')[0].replace('.', ' ').replace(/\b\w/g, l => l.toUpperCase()),
         email,
+        role: role || 'customer',
+        subscriptionPlan: 'free',
+        coachStatus: role === 'coach' ? 'unverified' : undefined,
         isLoggedIn: true,
         goal: profile.goal,
         diet: profile.diet,
@@ -348,7 +397,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
-  const signup = async (name: string, email: string, password = 'Password@123', goal?: TargetGoal, diet?: TargetDiet) => {
+  const signup = async (name: string, email: string, password = 'Password@123', goal?: TargetGoal, diet?: TargetDiet, role?: UserRole) => {
     try {
       const { data, error } = await insforge.auth.signUp({
         email,
@@ -364,6 +413,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         id: userId,
         name,
         email,
+        role: role || 'customer',
+        subscriptionPlan: 'free',
+        coachStatus: role === 'coach' ? 'unverified' : undefined,
         isLoggedIn: true,
         goal: userGoal,
         diet: userDiet,
@@ -444,22 +496,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           .order('price', { ascending: true });
 
         if (prods && prods.length > 0) {
-          const mapped: Product[] = prods.map((item: any) => ({
-            id: item.id,
-            name: item.name,
-            brand: item.brand,
-            category: item.category,
-            subcategory: item.subcategory || undefined,
-            form: item.form || 'Powder',
-            price: Number(item.price),
-            originalPrice: Number(item.original_price || item.price),
-            rating: Number(item.rating || 4.8),
-            reviewsCount: Number(item.reviews_count || 0),
-            image: item.image,
-            matchScore: item.match_score || 95,
-            matchReason: item.match_reason || undefined,
-            description: item.description || '',
-            servings: item.servings || 30,
+          const rawMap = new Map((productsDataRaw as Product[]).map(p => [p.id, p]));
+          const mapped: Product[] = prods.map((item: any) => {
+            const raw = rawMap.get(item.id);
+            return {
+              id: item.id,
+              name: item.name,
+              brand: item.brand,
+              category: item.category,
+              subcategory: item.subcategory || undefined,
+              form: item.form || 'Powder',
+              price: Number(item.price),
+              originalPrice: Number(item.original_price || item.price),
+              rating: Number(item.rating || 4.8),
+              reviewsCount: Number(item.reviews_count || 0),
+              image: raw?.image || item.image,
+              matchScore: item.match_score || 95,
+              matchReason: item.match_reason || undefined,
+              description: item.description || '',
+              servings: item.servings || 30,
             protein_g: Number(item.protein_g || 0),
             calories: Number(item.nutrition_facts?.calories?.replace?.(/\D/g, '') || 0),
             target_goal: (item.target_goal || 'Muscle Gain') as TargetGoal,
@@ -478,8 +533,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             reviews: item.reviews || [],
             brandVerificationBadge: item.brand_verification_badge || undefined,
             isBestSeller: item.is_featured ?? true
-          }));
-          setProductsList(mapped);
+          };
+        });
+        setProductsList(mapped);
         }
 
         const { data: codes } = await insforge.database
@@ -512,8 +568,31 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const savedUser = localStorage.getItem('purepro_user') || localStorage.getItem('trustit_user');
       if (savedUser) {
         const parsedUser = JSON.parse(savedUser);
+        if (!parsedUser.role) parsedUser.role = 'customer';
+        if (!parsedUser.subscriptionPlan) parsedUser.subscriptionPlan = 'free';
         setCurrentUser(parsedUser);
         loadUserOrders(parsedUser.id);
+      }
+
+      const savedSessions = localStorage.getItem('workoutSessions');
+      if (savedSessions) {
+        try {
+          setWorkoutSessions(JSON.parse(savedSessions));
+        } catch (e) {}
+      }
+
+      const savedApts = localStorage.getItem('appointmentRequests');
+      if (savedApts) {
+        try {
+          setAppointmentRequests(JSON.parse(savedApts));
+        } catch (e) {}
+      }
+
+      const savedApps = localStorage.getItem('coachApplications');
+      if (savedApps) {
+        try {
+          setCoachApplications(JSON.parse(savedApps));
+        } catch (e) {}
       }
 
       const savedProfile = localStorage.getItem('purepro_profile') || localStorage.getItem('trustit_profile') || localStorage.getItem('vitaliq_profile');
@@ -891,6 +970,178 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
+  // Fitness Journey actions
+  const saveWorkoutSession = (sessionData: Omit<WorkoutSession, 'id' | 'userId'>): WorkoutSession => {
+    const userId = currentUser?.id || 'guest-user';
+    const newSession: WorkoutSession = {
+      id: 'ws-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+      userId,
+      ...sessionData
+    };
+    setWorkoutSessions(prev => {
+      const updated = [newSession, ...prev];
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('workoutSessions', JSON.stringify(updated));
+      }
+      return updated;
+    });
+    return newSession;
+  };
+
+  // Freemium Upgrade actions
+  const openUpgradeModal = (feature?: 'multi-plan' | 'full-analytics') => {
+    setUpgradeTriggerFeature(feature);
+    setIsUpgradeModalOpen(true);
+  };
+
+  const closeUpgradeModal = () => {
+    setIsUpgradeModalOpen(false);
+    setUpgradeTriggerFeature(undefined);
+  };
+
+  const upgradeToPremium = () => {
+    if (currentUser) {
+      const updatedUser: UserAccount = {
+        ...currentUser,
+        subscriptionPlan: 'premium'
+      };
+      setCurrentUser(updatedUser);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('purepro_user', JSON.stringify(updatedUser));
+      }
+    } else {
+      const guestPremium: UserAccount = {
+        id: 'USR-PREMIUM-' + Math.floor(1000 + Math.random() * 9000),
+        name: 'PurePro Member',
+        email: 'member@purepro.fit',
+        isLoggedIn: true,
+        role: 'customer',
+        subscriptionPlan: 'premium',
+        goal: profile.goal,
+        diet: profile.diet,
+        createdAt: new Date().toLocaleDateString()
+      };
+      setCurrentUser(guestPremium);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('purepro_user', JSON.stringify(guestPremium));
+      }
+    }
+  };
+
+  // Coach Marketplace & Appointments
+  const requestAppointment = (reqData: Omit<AppointmentRequest, 'id' | 'userId' | 'createdAt' | 'status'>): AppointmentRequest => {
+    const userId = currentUser?.id || 'guest-user';
+    const newReq: AppointmentRequest = {
+      id: 'apt-' + Date.now(),
+      userId,
+      ...reqData,
+      status: 'Pending',
+      createdAt: new Date().toISOString()
+    };
+    setAppointmentRequests(prev => {
+      const updated = [newReq, ...prev];
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('appointmentRequests', JSON.stringify(updated));
+      }
+      return updated;
+    });
+    return newReq;
+  };
+
+  const updateAppointmentStatus = (id: string, status: 'Confirmed' | 'Declined') => {
+    setAppointmentRequests(prev => {
+      const updated = prev.map(req => req.id === id ? { ...req, status } : req);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('appointmentRequests', JSON.stringify(updated));
+      }
+      return updated;
+    });
+  };
+
+  // Coach Onboarding & Admin Review
+  const submitCoachApplication = (appData: Omit<CoachApplication, 'id' | 'status' | 'submittedDate'>): CoachApplication => {
+    const newApp: CoachApplication = {
+      id: 'app-' + Date.now(),
+      ...appData,
+      status: 'Pending Review',
+      submittedDate: new Date().toISOString()
+    };
+    setCoachApplications(prev => {
+      const updated = [newApp, ...prev];
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('coachApplications', JSON.stringify(updated));
+      }
+      return updated;
+    });
+
+    if (currentUser && currentUser.email === appData.email) {
+      const updatedUser: UserAccount = {
+        ...currentUser,
+        role: 'coach',
+        coachStatus: 'pending'
+      };
+      setCurrentUser(updatedUser);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('purepro_user', JSON.stringify(updatedUser));
+      }
+    }
+    return newApp;
+  };
+
+  const reviewCoachApplication = (id: string, status: 'verified' | 'rejected') => {
+    setCoachApplications(prev => {
+      const updated = prev.map(a => a.id === id ? { ...a, status } : a);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('coachApplications', JSON.stringify(updated));
+      }
+      return updated;
+    });
+
+    const app = coachApplications.find(a => a.id === id);
+    if (app && currentUser && (currentUser.id === app.userId || currentUser.email === app.email)) {
+      const updatedUser: UserAccount = {
+        ...currentUser,
+        role: 'coach',
+        coachStatus: status
+      };
+      setCurrentUser(updatedUser);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('purepro_user', JSON.stringify(updatedUser));
+      }
+    }
+  };
+
+  const setUserAccountRole = (role: UserRole, coachStatus?: CoachStatus) => {
+    if (currentUser) {
+      const updatedUser: UserAccount = {
+        ...currentUser,
+        role,
+        coachStatus: coachStatus || currentUser.coachStatus || (role === 'coach' ? 'verified' : undefined)
+      };
+      setCurrentUser(updatedUser);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('purepro_user', JSON.stringify(updatedUser));
+      }
+    } else {
+      const demoUser: UserAccount = {
+        id: 'USR-' + role.toUpperCase() + '-DEMO',
+        name: role === 'coach' ? 'Coach Vikramaditya' : role === 'admin' ? 'PurePro Admin' : 'Athlete Rahul',
+        email: `${role}@purepro.fit`,
+        isLoggedIn: true,
+        role,
+        subscriptionPlan: role === 'customer' ? 'free' : 'premium',
+        coachStatus: coachStatus || (role === 'coach' ? 'verified' : undefined),
+        goal: profile.goal,
+        diet: profile.diet,
+        createdAt: new Date().toLocaleDateString()
+      };
+      setCurrentUser(demoUser);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('purepro_user', JSON.stringify(demoUser));
+      }
+    }
+  };
+
   const navigateTo = (screen: ScreenType, productId?: string) => {
     if (productId) {
       setSelectedProductId(productId);
@@ -899,7 +1150,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       try {
-        const path = screen === 'home' ? '/' : `/${screen}/`;
+        let path = `/${screen}/`;
+        if (screen === 'home') path = '/';
+        else if (screen === 'coach-onboard') path = '/coach/onboard/';
+        else if (screen === 'coach-dashboard') path = '/coach/dashboard/';
+        else if (screen === 'admin-coaches') path = '/admin/coaches/';
+
         if (window.location.pathname !== path) {
           window.history.pushState({ screen, productId }, '', path);
         }
@@ -929,6 +1185,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         login,
         signup,
         logout,
+        setUserAccountRole,
+        workoutSessions,
+        saveWorkoutSession,
+        isPremium,
+        isUpgradeModalOpen,
+        upgradeTriggerFeature,
+        openUpgradeModal,
+        closeUpgradeModal,
+        upgradeToPremium,
+        coaches,
+        appointmentRequests,
+        requestAppointment,
+        updateAppointmentStatus,
+        coachApplications,
+        submitCoachApplication,
+        reviewCoachApplication,
         products: scoredProducts,
         recommendedProducts,
         selectedProduct,

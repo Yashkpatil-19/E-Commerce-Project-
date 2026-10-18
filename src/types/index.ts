@@ -206,12 +206,24 @@ export type ScreenType =
   | 'checkout' 
   | 'order-confirmation' 
   | 'profile-setup'
-  | 'profile';
+  | 'profile'
+  | 'fitness-journey'
+  | 'coach-onboard'
+  | 'coach-dashboard'
+  | 'admin-coaches'
+  | 'game';
+
+export type UserRole = 'customer' | 'coach' | 'admin';
+export type SubscriptionPlan = 'free' | 'premium';
+export type CoachStatus = 'unverified' | 'pending' | 'verified' | 'rejected';
 
 export interface UserAccount {
   id: string;
   name: string;
   email: string;
+  role?: UserRole;
+  subscriptionPlan?: SubscriptionPlan;
+  coachStatus?: CoachStatus;
   phone?: string;
   avatar?: string;
   isLoggedIn: boolean;
@@ -219,6 +231,90 @@ export interface UserAccount {
   diet?: TargetDiet;
   savedAddresses?: string[];
   createdAt?: string;
+}
+
+export type PlanId = 'get-fit' | 'build-muscle' | 'weight-loss';
+export type ExerciseDifficulty = 'Beginner' | 'Intermediate' | 'Advanced';
+export type ExerciseEquipment = 'None' | 'Dumbbell' | 'Machine' | 'Bodyweight';
+export type ExerciseMode = 'reps' | 'duration';
+
+export interface Exercise {
+  id: string;
+  name: string;
+  targetPlans: PlanId[];
+  muscleGroup: string;
+  equipment: ExerciseEquipment;
+  difficulty: ExerciseDifficulty;
+  met: number;
+  mode: ExerciseMode;
+  defaultSets?: number;
+  defaultReps?: number;
+  defaultDurationMin?: number;
+  description: string;
+}
+
+export interface WorkoutExerciseItem extends Exercise {
+  computedDurationMin: number;
+  computedCalories: number;
+}
+
+export interface GeneratedWorkout {
+  planId: PlanId;
+  exercises: WorkoutExerciseItem[];
+  totalCalories: number;
+  totalDurationMin: number;
+}
+
+export interface WorkoutSession {
+  id: string;
+  userId: string;
+  planId: PlanId;
+  date: string; // YYYY-MM-DD
+  exercisesCompleted: string[];
+  totalCalories: number;
+  durationMin: number;
+}
+
+export interface Coach {
+  id: string;
+  name: string;
+  photo: string;
+  specializations: PlanId[];
+  experienceYears: number;
+  rating: number;
+  bio: string;
+  status: 'verified';
+}
+
+export interface AppointmentRequest {
+  id: string;
+  userId: string;
+  coachId: string;
+  date: string;
+  time: string;
+  planId: PlanId;
+  message: string;
+  status: 'Pending' | 'Confirmed' | 'Declined';
+  createdAt: string;
+}
+
+export interface CoachApplication {
+  id: string;
+  userId?: string;
+  name: string;
+  email: string;
+  phone: string;
+  idType: 'Aadhaar' | 'PAN' | 'Passport' | 'Driving Licence';
+  idNumberMasked: string;
+  certFileName: string;
+  certFileSize: number;
+  addressProofFileName: string;
+  addressProofFileSize: number;
+  profilePhotoUrl?: string;
+  experienceYears: number;
+  specializations: PlanId[];
+  status: 'Pending Review' | 'verified' | 'rejected';
+  submittedDate: string;
 }
 
 export interface PendingCartAction {

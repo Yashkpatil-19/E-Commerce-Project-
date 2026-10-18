@@ -131,6 +131,13 @@ export const ProductDetailScreen: React.FC = () => {
             <img
               src={selectedProduct.image}
               alt={selectedProduct.name}
+              referrerPolicy="no-referrer"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.src.endsWith('/products/fallback.svg')) {
+                  target.src = '/products/fallback.svg';
+                }
+              }}
               className="w-full h-full object-contain mix-blend-multiply drop-shadow-lg max-h-[460px]"
             />
           </div>

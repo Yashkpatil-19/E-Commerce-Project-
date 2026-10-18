@@ -73,6 +73,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             src={product.image}
             alt={product.name}
             loading="lazy"
+            referrerPolicy="no-referrer"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (!target.src.endsWith('/products/fallback.svg')) {
+                target.src = '/products/fallback.svg';
+              }
+            }}
             className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
           />
         </div>

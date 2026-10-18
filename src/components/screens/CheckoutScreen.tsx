@@ -403,7 +403,15 @@ export const CheckoutScreen: React.FC = () => {
               {cart.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3 p-2 bg-slate-50 rounded-xl">
                   <div className="w-12 h-12 bg-white rounded-lg p-1 border border-slate-100 flex items-center justify-center flex-shrink-0">
-                    <img src={item.product.image} alt={item.product.name} className="w-full h-full object-contain" />
+                    <img
+                      src={item.product.image}
+                      alt={item.product.name}
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        e.currentTarget.src = '/products/fallback.svg';
+                      }}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-slate-900 text-xs truncate">{item.product.name}</h4>

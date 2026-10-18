@@ -47,7 +47,7 @@ export const MarketingBannerCarousel: React.FC = () => {
       highlight: 'Greatness Unlocked • Optimum Advantage of Champions',
       subheading: '24g premium whey protein isolate as #1 ingredient with 5.5g BCAAs. Sourced directly from official Optimum Nutrition warehouses with verifiable hologram seals.',
       perks: ['24g Pure Protein', '5.5g BCAAs', 'Direct Factory Sealed', 'Official ON Partner'],
-      image: 'https://www.optimumnutrition.co.in/cdn/shop/files/748927065732_3_94f744cb-b070-41da-8547-c94fdf706b9e.jpg?v=1773298005&width=1946',
+      image: '/banners/banner-on-whey.jpg',
       ctaText: 'Shop Optimum Nutrition',
       ctaAction: 'category',
       categoryParam: 'Protein',
@@ -64,7 +64,7 @@ export const MarketingBannerCarousel: React.FC = () => {
       highlight: 'Enhanced Absorption Formula (EAF®) • Phirse Zidd Kar',
       subheading: 'Clinically tested for 50% higher protein absorption and 60% lower stomach discomfort. Powered by Olympic Champion Neeraj Chopra with Labdoor USA certified purity.',
       perks: ['50% Higher Absorption', '25g Clean Protein', 'Zero Bloating', 'Labdoor USA Tested'],
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ8lnrkSVQofsmmThZMtYpOhWiahH_IQjVHe0NXVOulw&s=10',
+      image: '/banners/banner-mb-biozyme.jpg',
       ctaText: 'Shop MuscleBlaze Biozyme',
       ctaAction: 'category',
       categoryParam: 'Protein',
@@ -81,7 +81,7 @@ export const MarketingBannerCarousel: React.FC = () => {
       highlight: '25g Hydrolyzed Protein • 120 Calories • ≤1g Sugar',
       subheading: 'Ultra-fast digesting hydrolyzed whey isolate with less than 1g sugar and fat. Trusted worldwide by elite physique athletes for lean vascular muscle and instant recovery.',
       perks: ['25g Hydrolyzed Isolate', '120 Calories', 'Zero Lactose Bloat', 'Informed Choice Certified'],
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbnUWuOEfvUgnIrROsakmFmNpowaTga9890DU6GUzD3Q&s=10',
+      image: '/banners/banner-dymatize-iso.jpg',
       ctaText: 'Discover Dymatize ISO 100',
       ctaAction: 'products',
       bgGradient: 'from-slate-950 via-blue-950 to-slate-900',
@@ -97,7 +97,7 @@ export const MarketingBannerCarousel: React.FC = () => {
       highlight: 'Scratch-Code Hologram on Every Single Tub',
       subheading: 'Eliminate counterfeit risks forever. Verify physical seal batches instantly using our direct manufacturer anti-counterfeit registry before consuming.',
       perks: ['Instant Batch Authentication', '100% Or 200% Refund', 'Tamper-Proof Seals', 'Direct Factory Logistics'],
-      image: 'https://img2.hkrtcdn.com/39964/prd_3996391-MuscleBlaze-Creatine-Monohydrate-CreAMP-Unflavoured-0.55-lb_o.jpg',
+      image: '/banners/banner-authenticity.jpg',
       ctaText: 'Verify Your Scratch Code Now',
       ctaAction: 'verify',
       bgGradient: 'from-emerald-950 via-slate-950 to-teal-950',
@@ -262,6 +262,10 @@ export const MarketingBannerCarousel: React.FC = () => {
               <img
                 src={activeSlideData.image}
                 alt={activeSlideData.title}
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.currentTarget.src = '/products/fallback.svg';
+                }}
                 className="w-full h-full object-cover rounded-2xl filter drop-shadow-xl transition-transform duration-700"
               />
 

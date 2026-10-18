@@ -789,6 +789,10 @@ export const AssessmentQuizModal: React.FC<AssessmentQuizModalProps> = ({ isOpen
                         <img 
                           src={item.image} 
                           alt={item.name} 
+                          referrerPolicy="no-referrer"
+                          onError={(e) => {
+                            e.currentTarget.src = '/products/fallback.svg';
+                          }}
                           className="w-12 h-12 rounded-xl object-contain bg-slate-50 p-1 flex-shrink-0" 
                         />
                         <div className="min-w-0">

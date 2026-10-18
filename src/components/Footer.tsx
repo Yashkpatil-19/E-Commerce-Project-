@@ -130,6 +130,16 @@ export const Footer: React.FC = () => {
                 </button>
               </li>
               <li>
+                <button onClick={() => navigateTo('fitness-journey')} className="hover:text-emerald-400 text-emerald-400 font-bold transition-colors">
+                  Fitness Journey Workouts
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateTo('coach-onboard')} className="hover:text-emerald-400 text-slate-300 font-bold transition-colors">
+                  For Coaches
+                </button>
+              </li>
+              <li>
                 <button onClick={() => navigateTo('profile-setup')} className="hover:text-emerald-400 transition-colors">
                   Diet & Goal Matcher
                 </button>

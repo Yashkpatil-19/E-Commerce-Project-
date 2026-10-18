@@ -1,0 +1,42 @@
+[
+  {
+    "id": "coach-01",
+    "name": "Vikramaditya Roy, CSCS",
+    "photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+    "specializations": ["build-muscle", "get-fit"],
+    "experienceYears": 9,
+    "rating": 4.9,
+    "bio": "Certified Strength and Conditioning Specialist with 9+ years coaching competitive bodybuilders and athletes on progressive hypertrophy and mechanical tension.",
+    "status": "verified"
+  },
+  {
+    "id": "coach-02",
+    "name": "Ananya Sen, ISSA CPT",
+    "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=80",
+    "specializations": ["weight-loss", "get-fit"],
+    "experienceYears": 7,
+    "rating": 4.95,
+    "bio": "Specialist in metabolic conditioning, sustainable caloric deficits, and postpartum body recomposition with over 400 client transformations.",
+    "status": "verified"
+  },
+  {
+    "id": "coach-03",
+    "name": "Devraj Malhotra, ACE-MES",
+    "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80",
+    "specializations": ["build-muscle", "weight-loss", "get-fit"],
+    "experienceYears": 11,
+    "rating": 4.88,
+    "bio": "Senior exercise physiologist focusing on pain-free biomechanics, joint longevity, and heavy compound lift mastery.",
+    "status": "verified"
+  },
+  {
+    "id": "coach-04",
+    "name": "Kavita Rao, NASM-PES",
+    "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=80",
+    "specializations": ["get-fit", "weight-loss"],
+    "experienceYears": 6,
+    "rating": 4.92,
+    "bio": "Functional movement and athletic conditioning coach helping busy professionals build lean muscle and high cardiovascular capacity.",
+    "status": "verified"
+  }
+]

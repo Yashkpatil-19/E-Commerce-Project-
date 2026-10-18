@@ -14,7 +14,11 @@ import {
   Lock,
   PhoneCall,
   Sliders,
-  Package
+  Package,
+  Dumbbell,
+  Award,
+  LogOut,
+  Gamepad2
 } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -29,10 +33,12 @@ export const Navbar: React.FC = () => {
     setSearchQuery,
     currentUser,
     openAuthModal,
-    openAssessment
+    openAssessment,
+    logout
   } = useApp();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
 
   const handleCategoryNav = (cat: string) => {
     setActiveCategoryFilter(cat);
@@ -146,6 +152,34 @@ export const Navbar: React.FC = () => {
             <span>AI Supplement Quiz</span>
           </button>
 
+          {/* Fitness Journey Shortcut */}
+          <button
+            onClick={() => navigateTo('fitness-journey')}
+            className={`px-3.5 py-2 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all ${
+              currentScreen === 'fitness-journey'
+                ? 'bg-emerald-600 text-white shadow-emerald'
+                : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-950 border border-emerald-300 shadow-xs'
+            }`}
+            title="Fitness Journey - Workouts & Calorie Burn"
+          >
+            <Dumbbell className="w-4 h-4 text-emerald-700" />
+            <span>Fitness Journey</span>
+          </button>
+
+          {/* Arcade Guessing Game Shortcut */}
+          <button
+            onClick={() => navigateTo('game')}
+            className={`px-3.5 py-2 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all ${
+              currentScreen === 'game'
+                ? 'bg-amber-500 text-slate-950 shadow-md font-bold'
+                : 'bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 shadow-xs'
+            }`}
+            title="Play Mind Reader Guessing Game & Unlock Store Perks"
+          >
+            <Gamepad2 className="w-4 h-4 text-amber-600 animate-bounce" />
+            <span>🎮 Guess & Win</span>
+          </button>
+
           {/* Profile Matcher */}
           <button
             onClick={() => navigateTo('profile-setup')}
@@ -159,35 +193,107 @@ export const Navbar: React.FC = () => {
             <span>{profile.diet} • {profile.goal}</span>
           </button>
 
-          {/* Account / My Orders & Profile */}
-          <button
-            onClick={() => currentUser ? navigateTo('profile') : openAuthModal()}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
-              currentUser
-                ? currentScreen === 'profile'
-                  ? 'bg-emerald-600 text-white shadow-emerald shadow-xs'
-                  : 'bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-200'
-                : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald shadow-xs'
-            }`}
-            title={currentUser ? 'View My Orders & Profile' : 'Sign In'}
-          >
-            {currentUser ? (
-              <>
-                <span className={`w-5 h-5 rounded-full text-[10px] font-black flex items-center justify-center shadow-xs ${
-                  currentScreen === 'profile' ? 'bg-white text-emerald-800' : 'bg-emerald-600 text-white'
-                }`}>
-                  {currentUser.name ? currentUser.name.slice(0, 1).toUpperCase() : 'U'}
-                </span>
-                <span className="max-w-[90px] truncate">{currentUser.name.split(' ')[0]}</span>
-                <Package className="w-3.5 h-3.5 text-slate-400" />
-              </>
-            ) : (
-              <>
-                <User className="w-4 h-4" />
-                <span>Sign In</span>
-              </>
+          {/* Account / My Orders & Profile with Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => currentUser ? setAccountDropdownOpen(!accountDropdownOpen) : openAuthModal()}
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
+                currentUser
+                  ? currentScreen === 'profile'
+                    ? 'bg-emerald-600 text-white shadow-emerald shadow-xs'
+                    : 'bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-200'
+                  : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald shadow-xs'
+              }`}
+              title={currentUser ? 'Account & Coach Menu' : 'Sign In'}
+            >
+              {currentUser ? (
+                <>
+                  <span className={`w-5 h-5 rounded-full text-[10px] font-black flex items-center justify-center shadow-xs ${
+                    currentScreen === 'profile' ? 'bg-white text-emerald-800' : 'bg-emerald-600 text-white'
+                  }`}>
+                    {currentUser.name ? currentUser.name.slice(0, 1).toUpperCase() : 'U'}
+                  </span>
+                  <span className="max-w-[90px] truncate">{currentUser.name.split(' ')[0]}</span>
+                  <ChevronDown className="w-3 h-3 text-slate-400" />
+                </>
+              ) : (
+                <>
+                  <User className="w-4 h-4" />
+                  <span>Sign In</span>
+                </>
+              )}
+            </button>
+
+            {/* Account Dropdown */}
+            {accountDropdownOpen && currentUser && (
+              <div className="absolute right-0 top-full mt-2 w-60 bg-white rounded-2xl shadow-xl border border-slate-200 p-2 z-50 animate-fade-in text-xs space-y-1">
+                <div className="px-3 py-2 border-b border-slate-100">
+                  <p className="font-bold text-slate-900 truncate">{currentUser.name}</p>
+                  <p className="text-[11px] text-slate-500 truncate">{currentUser.email}</p>
+                  <span className="inline-block mt-1 text-[10px] font-mono uppercase bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded">
+                    {currentUser.role || 'customer'} • {currentUser.subscriptionPlan || 'free'}
+                  </span>
+                </div>
+
+                <button
+                  onClick={() => { navigateTo('profile'); setAccountDropdownOpen(false); }}
+                  className="w-full p-2.5 rounded-xl text-left hover:bg-slate-50 flex items-center gap-2 font-bold text-slate-800"
+                >
+                  <Package className="w-4 h-4 text-emerald-600" />
+                  <span>My Orders & Profile</span>
+                </button>
+
+                <button
+                  onClick={() => { navigateTo('fitness-journey'); setAccountDropdownOpen(false); }}
+                  className="w-full p-2.5 rounded-xl text-left hover:bg-slate-50 flex items-center gap-2 font-bold text-slate-800"
+                >
+                  <Dumbbell className="w-4 h-4 text-emerald-600" />
+                  <span>My Fitness Journey</span>
+                </button>
+
+                <div className="border-t border-slate-100 my-1" />
+
+                {/* For Coaches item */}
+                <button
+                  onClick={() => {
+                    if (currentUser.role === 'coach') {
+                      navigateTo('coach-dashboard');
+                    } else {
+                      navigateTo('coach-onboard');
+                    }
+                    setAccountDropdownOpen(false);
+                  }}
+                  className="w-full p-2.5 rounded-xl text-left hover:bg-emerald-50 text-emerald-950 flex items-center justify-between font-bold"
+                >
+                  <div className="flex items-center gap-2">
+                    <Award className="w-4 h-4 text-emerald-600" />
+                    <span>{currentUser.role === 'coach' ? 'Coach Dashboard' : 'For Coaches'}</span>
+                  </div>
+                  <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-black">
+                    {currentUser.role === 'coach' ? 'Manage' : 'Join'}
+                  </span>
+                </button>
+
+                <button
+                  onClick={() => { navigateTo('admin-coaches'); setAccountDropdownOpen(false); }}
+                  className="w-full p-2.5 rounded-xl text-left hover:bg-slate-50 flex items-center gap-2 font-medium text-slate-600"
+                >
+                  <ShieldCheck className="w-4 h-4 text-slate-400" />
+                  <span>Demo Admin Panel</span>
+                </button>
+
+                <div className="border-t border-slate-100 my-1" />
+
+                <button
+                  onClick={() => { logout(); setAccountDropdownOpen(false); }}
+                  className="w-full p-2 rounded-xl text-left hover:bg-rose-50 text-rose-600 flex items-center gap-2 font-bold"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>Sign Out</span>
+                </button>
+              </div>
             )}
-          </button>
+          </div>
 
           {/* Cart with Price */}
           <button
@@ -236,7 +342,19 @@ export const Navbar: React.FC = () => {
       {/* Desktop Category Navigation Bar */}
       <nav className="hidden lg:block border-t border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs font-bold text-slate-700">
-          <div className="flex items-center gap-6 py-3">
+          <div className="flex items-center gap-5 py-3">
+            <button 
+              onClick={() => navigateTo('fitness-journey')}
+              className={`transition-all flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs ${
+                currentScreen === 'fitness-journey'
+                  ? 'bg-emerald-600 text-white font-black shadow-xs'
+                  : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-950 font-black border border-emerald-300'
+              }`}
+            >
+              <Dumbbell className="w-3.5 h-3.5 text-emerald-700" />
+              <span>Fitness Journey</span>
+            </button>
+
             <button 
               onClick={() => { setActiveCategoryFilter('All'); navigateTo('products'); }}
               className="hover:text-emerald-600 transition-colors flex items-center gap-1 text-slate-950 font-black"
@@ -290,14 +408,32 @@ export const Navbar: React.FC = () => {
             />
           </form>
 
-          {/* AI Clinical Quiz Button */}
-          <button
-            onClick={() => { openAssessment(); setMobileMenuOpen(false); }}
-            className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-black text-xs flex items-center justify-center gap-2 shadow-sm"
-          >
-            <Sparkles className="w-4 h-4 text-emerald-200" />
-            <span>AI Clinical Supplement Quiz</span>
-          </button>
+          {/* Fitness Journey, AI Clinical Quiz & Guessing Game */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <button
+              onClick={() => { navigateTo('fitness-journey'); setMobileMenuOpen(false); }}
+              className="w-full py-2.5 px-3 rounded-xl bg-emerald-600 text-white font-black text-xs flex items-center justify-center gap-2 shadow-emerald shadow-xs"
+            >
+              <Dumbbell className="w-4 h-4 text-white" />
+              <span>Fitness Journey</span>
+            </button>
+
+            <button
+              onClick={() => { openAssessment(); setMobileMenuOpen(false); }}
+              className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-emerald-700 to-teal-700 text-white font-black text-xs flex items-center justify-center gap-2 shadow-sm"
+            >
+              <Sparkles className="w-4 h-4 text-emerald-200" />
+              <span>AI Clinical Quiz</span>
+            </button>
+
+            <button
+              onClick={() => { navigateTo('game'); setMobileMenuOpen(false); }}
+              className="w-full py-2.5 px-3 rounded-xl bg-amber-500 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-sm"
+            >
+              <Gamepad2 className="w-4 h-4 text-slate-950" />
+              <span>🎮 Guess & Win</span>
+            </button>
+          </div>
 
           <div className="grid grid-cols-2 gap-2 text-xs font-bold pt-1">
             <button 
@@ -347,11 +483,28 @@ export const Navbar: React.FC = () => {
                 <span>Sign In / Create Account</span>
               </button>
             )}
+
+            {/* For Coaches button */}
+            <button
+              onClick={() => {
+                if (currentUser?.role === 'coach') {
+                  navigateTo('coach-dashboard');
+                } else {
+                  navigateTo('coach-onboard');
+                }
+                setMobileMenuOpen(false);
+              }}
+              className="w-full py-2.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-bold text-xs flex items-center justify-center gap-2 border border-emerald-200"
+            >
+              <Award className="w-4 h-4 text-emerald-700" />
+              <span>{currentUser?.role === 'coach' ? 'Coach Dashboard' : 'For Coaches (Apply as Mentor)'}</span>
+            </button>
+
             <button
               onClick={() => { navigateTo('verify'); setMobileMenuOpen(false); }}
-              className="w-full py-2.5 px-3 rounded-xl bg-emerald-50 text-emerald-800 font-bold text-xs flex items-center justify-center gap-2"
+              className="w-full py-2.5 px-3 rounded-xl bg-slate-100 text-slate-800 font-bold text-xs flex items-center justify-center gap-2"
             >
-              <ShieldCheck className="w-4 h-4" />
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
               <span>Verify Product Authenticity</span>
             </button>
             <button

@@ -120,6 +120,10 @@ export const CartScreen: React.FC = () => {
                 <img
                   src={item.product.image}
                   alt={item.product.name}
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = '/products/fallback.svg';
+                  }}
                   className="w-full h-full object-contain mix-blend-multiply"
                 />
               </div>

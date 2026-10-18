@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="50%" stop-color="#022c22" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="tub" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="50%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="32" fill="url(#bg)" />
+
+  <!-- Subtle glow -->
+  <circle cx="200" cy="190" r="120" fill="#10b981" opacity="0.12" filter="blur(30px)" />
+
+  <!-- Supplement Tub Illustration -->
+  <g transform="translate(100, 75)">
+    <!-- Lid -->
+    <rect x="45" y="15" width="110" height="28" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="2" />
+    <!-- Lid Ridges -->
+    <line x1="60" y1="20" x2="60" y2="38" stroke="#475569" stroke-width="2" />
+    <line x1="80" y1="20" x2="80" y2="38" stroke="#475569" stroke-width="2" />
+    <line x1="100" y1="20" x2="100" y2="38" stroke="#475569" stroke-width="2" />
+    <line x1="120" y1="20" x2="120" y2="38" stroke="#475569" stroke-width="2" />
+    <line x1="140" y1="20" x2="140" y2="38" stroke="#475569" stroke-width="2" />
+
+    <!-- Neck -->
+    <rect x="55" y="43" width="90" height="15" fill="#1e293b" />
+
+    <!-- Tub Body -->
+    <rect x="25" y="58" width="150" height="175" rx="20" fill="url(#tub)" stroke="#334155" stroke-width="2" />
+
+    <!-- Label -->
+    <rect x="30" y="85" width="140" height="120" rx="8" fill="#090d16" />
+    
+    <!-- Shield Logo -->
+    <path d="M 100 100 L 118 108 L 118 125 C 118 138 100 148 100 148 C 100 148 82 138 82 125 L 82 108 Z" fill="url(#gold)" opacity="0.9" />
+    <path d="M 94 122 L 98 126 L 106 118" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- Brand Text -->
+    <text x="100" y="165" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="2">PUREPRO</text>
+    <text x="100" y="178" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="8" fill="#34d399" text-anchor="middle" letter-spacing="1">100% AUTHENTIC</text>
+
+    <!-- Hologram Seal -->
+    <circle cx="150" cy="180" r="10" fill="#047857" stroke="#6ee7b7" stroke-width="1.5" />
+    <text x="150" y="183" font-family="monospace" font-weight="bold" font-size="7" fill="#ffffff" text-anchor="middle">✓</text>
+  </g>
+
+  <!-- Bottom Badge -->
+  <rect x="70" y="325" width="260" height="38" rx="19" fill="#064e3b" stroke="#059669" stroke-width="1.5" />
+  <text x="200" y="349" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="12" fill="#ecfdf5" text-anchor="middle" letter-spacing="0.5">
+    AUTHENTIC SUPPLEMENT
+  </text>
+</svg>

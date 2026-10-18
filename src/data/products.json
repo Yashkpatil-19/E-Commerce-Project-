@@ -14,10 +14,17 @@
     "calories": 0,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegetarian",
-    "image": "https://www.optimumnutrition.com/cdn/shop/files/14_ON_Creatine6079919_B__4000x4000_27ae658d-acfb-4125-b308-9d83d3460048.png?v=1786473416&width=1000",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGiZt9oDxvFh_hrogAiGcEOVfrj9KlXaLH0YZuqeUuqw&s=10",
     "servings": 60,
-    "flavors": ["Unflavored Pure", "Fruit Punch", "Blue Raspberry"],
-    "sizes": ["250g (83 Servings)", "400g (133 Servings)"],
+    "flavors": [
+      "Unflavored Pure",
+      "Fruit Punch",
+      "Blue Raspberry"
+    ],
+    "sizes": [
+      "250g (83 Servings)",
+      "400g (133 Servings)"
+    ],
     "nutritionFacts": {
       "perServing": "3g (1 scoop)",
       "protein": "0g",
@@ -41,7 +48,11 @@
         "title": "Visible strength gains within 10 days! 100% Authentic.",
         "comment": "Verified the scratch-code on the seal immediately and it showed authentic. Mixes completely transparent in water with zero gritty texture. My bench press went up by 7.5kg in 3 weeks without any stomach distress.",
         "helpfulCount": 142,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       },
       {
         "id": "rev-c1-2",
@@ -53,7 +64,11 @@
         "title": "Gold standard of Creatine - Creapure quality is unmatched",
         "comment": "Been competing for 4 years. ON Creapure is the cleanest creatine in the market. No water retention under the skin, only intra-muscular fullness.",
         "helpfulCount": 89,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -72,10 +87,18 @@
     "calories": 0,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegetarian",
-    "image": "https://img2.hkrtcdn.com/39964/prd_3996391-MuscleBlaze-Creatine-Monohydrate-CreAMP-Unflavoured-0.55-lb_o.jpg",
+    "image": "/products/prod-creat-2.jpg",
     "servings": 66,
-    "flavors": ["Unflavored", "Tangy Orange", "Fruit Fusion"],
-    "sizes": ["100g (33 Servings)", "250g (83 Servings)", "400g"],
+    "flavors": [
+      "Unflavored",
+      "Tangy Orange",
+      "Fruit Fusion"
+    ],
+    "sizes": [
+      "100g (33 Servings)",
+      "250g (83 Servings)",
+      "400g"
+    ],
     "nutritionFacts": {
       "perServing": "3g (1 scoop)",
       "protein": "0g",
@@ -99,7 +122,11 @@
         "title": "Labdoor certified authenticity gives peace of mind",
         "comment": "Scratch code verified genuine instantly on PurePro portal. Huge difference in workout stamina. Zero bloating and dissolve speed is instant.",
         "helpfulCount": 97,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -118,10 +145,14 @@
     "calories": 0,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegetarian",
-    "image": "https://www.muscletech.com/cdn/shop/files/platinum-creatine-orange-splash_3e0fc160-cbb1-4ed5-b64b-c62d8617a600_grande.jpg?v=1788897204",
+    "image": "/products/prod-creat-3.jpg",
     "servings": 80,
-    "flavors": ["Pure Unflavored"],
-    "sizes": ["400g (80 Servings)"],
+    "flavors": [
+      "Pure Unflavored"
+    ],
+    "sizes": [
+      "400g (80 Servings)"
+    ],
     "nutritionFacts": {
       "perServing": "5g (1 scoop)",
       "protein": "0g",
@@ -145,7 +176,11 @@
         "title": "Unreal muscle pumps and recovery",
         "comment": "MuscleTech creatine always delivers. Genuine hologram seal on the tub. Mixes seamlessly with whey protein isolate post-workout.",
         "helpfulCount": 64,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -164,10 +199,14 @@
     "calories": 0,
     "target_goal": "Athletic Performance",
     "target_diet": "Vegetarian",
-    "image": "https://www.guardian.in/cdn/shop/files/CreatineMonohydrate100g_250g.png?v=1715411284",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFj0ta77NMvKyzfMaxnFHlhcRU8wHeGU8ll3RtndFNtw&s=10",
     "servings": 60,
-    "flavors": ["Unflavored"],
-    "sizes": ["250g (83 Servings)"],
+    "flavors": [
+      "Unflavored"
+    ],
+    "sizes": [
+      "250g (83 Servings)"
+    ],
     "nutritionFacts": {
       "perServing": "3g (1 scoop)",
       "protein": "0g",
@@ -191,7 +230,11 @@
         "title": "Pure quality from GNC",
         "comment": "Zero aftertaste, dissolves cleanly in warm water or pre-workout. Authentic packaging with tamper-evident seal.",
         "helpfulCount": 41,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -210,10 +253,15 @@
     "calories": 10,
     "target_goal": "General Fitness",
     "target_diet": "Non-Vegetarian",
-    "image": "https://img2.hkrtcdn.com/32066/prd_3206541-MuscleBlaze-Omega-3-Fish-Oil-Gold-3x-Triple-Strength-EPA-DHA-60-capsules_o.jpg",
+    "image": "/products/prod-fish-1.jpg",
     "servings": 60,
-    "flavors": ["Burpless Lemon Coated"],
-    "sizes": ["60 Softgels", "120 Softgels"],
+    "flavors": [
+      "Burpless Lemon Coated"
+    ],
+    "sizes": [
+      "60 Softgels",
+      "120 Softgels"
+    ],
     "nutritionFacts": {
       "perServing": "1 Softgel (1000mg)",
       "protein": "0g",
@@ -237,7 +285,11 @@
         "title": "Zero fishy burps, truly enteric coated!",
         "comment": "I've tried 4 different omega-3 brands and they all gave fish burps. MuscleBlaze Triple Strength is completely odorless and enteric coating really works. My joint stiffness after heavy squats disappeared within 2 weeks.",
         "helpfulCount": 218,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       },
       {
         "id": "rev-f1-2",
@@ -249,7 +301,11 @@
         "title": "High EPA & DHA concentration at honest price",
         "comment": "Most cheap fish oils have only 180 EPA / 120 DHA. This provides 550 EPA / 350 DHA in just one softgel! Genuine scratch code verified.",
         "helpfulCount": 165,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -268,10 +324,15 @@
     "calories": 10,
     "target_goal": "General Fitness",
     "target_diet": "Non-Vegetarian",
-    "image": "https://img10.hkrtcdn.com/41403/prd_4140219-TrueBasics-Ultra-Omega3-Fatty-Acids-EPA-525-mg-DHA-400-mg-30-capsules_o.jpg",
+    "image": "/products/prod-fish-2.jpg",
     "servings": 60,
-    "flavors": ["Anti-Reflux Neutral"],
-    "sizes": ["60 Softgel Capsules", "90 Softgel Capsules"],
+    "flavors": [
+      "Anti-Reflux Neutral"
+    ],
+    "sizes": [
+      "60 Softgel Capsules",
+      "90 Softgel Capsules"
+    ],
     "nutritionFacts": {
       "perServing": "1 Softgel (1250mg)",
       "protein": "0g",
@@ -295,7 +356,11 @@
         "title": "Clinical quality omega-3 with excellent lipid ratio",
         "comment": "As a physician, I check the triglycerides form and mercury testing reports. TrueBasics delivers certified molecular distillation. Triglyceride levels normalized on follow-up lipid profile.",
         "helpfulCount": 310,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -314,10 +379,15 @@
     "calories": 10,
     "target_goal": "Endurance",
     "target_diet": "Non-Vegetarian",
-    "image": "https://www.guardian.in/cdn/shop/files/TSFO_30N-1_5762806d-653a-44cc-bdcc-b179356c5420.jpg?v=1739181535",
+    "image": "/products/prod-fish-3.jpg",
     "servings": 60,
-    "flavors": ["Citrus Coated"],
-    "sizes": ["60 Softgels", "120 Softgels"],
+    "flavors": [
+      "Citrus Coated"
+    ],
+    "sizes": [
+      "60 Softgels",
+      "120 Softgels"
+    ],
     "nutritionFacts": {
       "perServing": "1 Softgel",
       "protein": "0g",
@@ -341,7 +411,11 @@
         "title": "Authentic GNC product with smooth digestion",
         "comment": "Verified genuine code on PurePro. GNC quality is top tier. Citrus aroma makes it very pleasant to take daily with morning breakfast.",
         "helpfulCount": 78,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -360,10 +434,14 @@
     "calories": 8,
     "target_goal": "General Fitness",
     "target_diet": "Vegan",
-    "image": "https://in.fastandup.com/cdn/shop/files/VeganOmega.png?v=1767956934&width=1000",
+    "image": "https://m.media-amazon.com/images/I/71fTV6BBAXL._AC_UF1000,1000_QL80_.jpg",
     "servings": 60,
-    "flavors": ["Clean Plant Shell"],
-    "sizes": ["60 Plant Capsules"],
+    "flavors": [
+      "Clean Plant Shell"
+    ],
+    "sizes": [
+      "60 Plant Capsules"
+    ],
     "nutritionFacts": {
       "perServing": "1 Capsule",
       "protein": "0g",
@@ -387,7 +465,11 @@
         "title": "Finally a 100% vegan certified Omega-3 that works!",
         "comment": "As a strict vegan, I couldn't take regular fish oil. Fast&Up algal capsules are completely plant-based and give me all the brain focus and joint recovery I need without harming ocean life.",
         "helpfulCount": 184,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -406,10 +488,15 @@
     "calories": 5,
     "target_goal": "General Fitness",
     "target_diet": "Vegetarian",
-    "image": "https://www.optimumnutrition.co.in/cdn/shop/files/748927052732_1.jpg?v=1773302233",
+    "image": "https://m.media-amazon.com/images/I/71MIluZWAkL._AC_UF1000,1000_QL80_.jpg",
     "servings": 90,
-    "flavors": ["Coated Capsules"],
-    "sizes": ["90 Capsules", "150 Capsules"],
+    "flavors": [
+      "Coated Capsules"
+    ],
+    "sizes": [
+      "90 Capsules",
+      "150 Capsules"
+    ],
     "nutritionFacts": {
       "perServing": "3 Capsules",
       "protein": "1g (Amino Blend)",
@@ -433,7 +520,11 @@
         "title": "Energy levels stay high all day long",
         "comment": "Verified genuine code on PurePro. Taking this daily eliminates afternoon workout fatigue. Packed with genuine zinc, magnesium, and active B-complex vitamins.",
         "helpfulCount": 156,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -452,10 +543,15 @@
     "calories": 0,
     "target_goal": "General Fitness",
     "target_diet": "Vegetarian",
-    "image": "https://www.optimumnutrition.co.in/cdn/shop/files/748927052749_1.jpg?v=1773302233",
+    "image": "/products/prod-vit-2.jpg",
     "servings": 60,
-    "flavors": ["Veg Capsule"],
-    "sizes": ["60 Capsules", "120 Capsules"],
+    "flavors": [
+      "Veg Capsule"
+    ],
+    "sizes": [
+      "60 Capsules",
+      "120 Capsules"
+    ],
     "nutritionFacts": {
       "perServing": "2 Capsules",
       "protein": "0g",
@@ -479,7 +575,11 @@
         "title": "Best women's multi with iron and biotin",
         "comment": "Noticeable improvement in hair density and daily energy. Authentic seal verified easily. Easy to swallow capsules without nausea.",
         "helpfulCount": 112,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -498,10 +598,15 @@
     "calories": 2,
     "target_goal": "General Fitness",
     "target_diet": "Vegetarian",
-    "image": "https://img4.hkrtcdn.com/28216/prd_2821533-MuscleBlaze-MBVite-Daily-Multivitamin-60-tablets-Unflavoured_o.jpg",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNox7A90cJNlSvv4Qo25BqBKXuQ5MrFZoKqvihy6b9NQ&s=10",
     "servings": 60,
-    "flavors": ["Unflavored Capsule"],
-    "sizes": ["60 Tablets", "120 Tablets"],
+    "flavors": [
+      "Unflavored Capsule"
+    ],
+    "sizes": [
+      "60 Tablets",
+      "120 Tablets"
+    ],
     "nutritionFacts": {
       "perServing": "1 Tablet",
       "protein": "0g",
@@ -525,7 +630,11 @@
         "title": "Great value multivitamin with added probiotics",
         "comment": "Having live probiotics included means my protein shake digestion is much smoother. Verified genuine via scratch code.",
         "helpfulCount": 85,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -544,10 +653,14 @@
     "calories": 0,
     "target_goal": "General Fitness",
     "target_diet": "Vegetarian",
-    "image": "https://img7.hkrtcdn.com/22438/prd_2243706-TrueBasics-Multivit-Sport-One-Daily-Vitamins-Minerals-Amino-Acids-with-Joint-Energy-Blends-30-tablets_o.jpg",
+    "image": "/products/prod-vit-4.jpg",
     "servings": 60,
-    "flavors": ["Veg Capsule"],
-    "sizes": ["60 Veg Capsules"],
+    "flavors": [
+      "Veg Capsule"
+    ],
+    "sizes": [
+      "60 Veg Capsules"
+    ],
     "nutritionFacts": {
       "perServing": "1 Capsule",
       "protein": "0g",
@@ -571,7 +684,11 @@
         "title": "D3 levels went from 14 to 48 ng/mL!",
         "comment": "Lab test confirmed dramatic rise in serum vitamin D3 within 6 weeks. The MK-7 inclusion ensures calcium doesn't calcify in heart blood vessels.",
         "helpfulCount": 190,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -591,10 +708,17 @@
     "calories": 120,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegetarian",
-    "image": "https://www.optimumnutrition.com/cdn/shop/files/on-1154008_Image_01.png?v=1756452646&width=1000",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT88QgAZpiaL7L-x4eR57wEYa9wlnW7rlxerKIW6oQ59A&s=10",
     "servings": 30,
-    "flavors": ["Double Rich Chocolate", "Vanilla Ice Cream", "Delicious Strawberry"],
-    "sizes": ["1 kg (2.2 lbs)", "2.27 kg (5 lbs)"],
+    "flavors": [
+      "Double Rich Chocolate",
+      "Vanilla Ice Cream",
+      "Delicious Strawberry"
+    ],
+    "sizes": [
+      "1 kg (2.2 lbs)",
+      "2.27 kg (5 lbs)"
+    ],
     "nutritionFacts": {
       "perServing": "30.4g (1 scoop)",
       "protein": "24g",
@@ -618,7 +742,11 @@
         "title": "Authentic ON Gold Standard - verified batch on tub!",
         "comment": "Scratched the hologram code and PurePro confirmed genuine factory seal. Double rich chocolate tastes amazing with cold almond milk. Zero lumps.",
         "helpfulCount": 245,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -638,10 +766,17 @@
     "calories": 130,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegetarian",
-    "image": "https://img8.hkrtcdn.com/39078/prd_3907787-MuscleBlaze-Biozyme-Performance-Whey-4.4-lb-Rich-Chocolate_o.jpg",
+    "image": "/products/prod-prot-2.jpg",
     "servings": 33,
-    "flavors": ["Rich Chocolate", "Magical Mango", "Kesar Kulfi"],
-    "sizes": ["1 kg (2.2 lbs)", "2 kg (4.4 lbs)"],
+    "flavors": [
+      "Rich Chocolate",
+      "Magical Mango",
+      "Kesar Kulfi"
+    ],
+    "sizes": [
+      "1 kg (2.2 lbs)",
+      "2 kg (4.4 lbs)"
+    ],
     "nutritionFacts": {
       "perServing": "36g (1 scoop)",
       "protein": "25g",
@@ -665,7 +800,11 @@
         "title": "No bloating at all, clinical formula works!",
         "comment": "Had terrible bloating with other whey powders. Biozyme is extremely gentle on digestion and helped me hit my 140g daily protein goal effortlessly.",
         "helpfulCount": 178,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -685,10 +824,17 @@
     "calories": 110,
     "target_goal": "Fat Loss",
     "target_diet": "Vegetarian",
-    "image": "https://dymatize.imgix.net/production/products/Hero_Product_Line_Page_Dymatize_Website_Desktop_ISO100_3840x2156_2024-01-16-170605_irvq.jpg?w=1000&auto=format",
+    "image": "/products/prod-prot-3.jpg",
     "servings": 30,
-    "flavors": ["Gourmet Chocolate", "Birthday Cake", "Fruity Pebbles"],
-    "sizes": ["1.1 kg (2.3 lbs)", "2.3 kg (5 lbs)"],
+    "flavors": [
+      "Gourmet Chocolate",
+      "Birthday Cake",
+      "Fruity Pebbles"
+    ],
+    "sizes": [
+      "1.1 kg (2.3 lbs)",
+      "2.3 kg (5 lbs)"
+    ],
     "nutritionFacts": {
       "perServing": "30g (1 scoop)",
       "protein": "25g",
@@ -712,7 +858,11 @@
         "title": "Fruity pebbles flavor is addictive, 25g pure isolate",
         "comment": "The best protein on earth for single-digit body fat cuts. 110 calories per scoop, digests like water. Authentic imported tub verified.",
         "helpfulCount": 210,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -732,10 +882,16 @@
     "calories": 140,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegan",
-    "image": "https://in.fastandup.com/cdn/shop/files/PP_1.jpg?v=1767956934&width=1000",
+    "image": "/products/prod-prot-4.jpg",
     "servings": 28,
-    "flavors": ["Rich Cocoa", "Cafe Mocha", "Mango Delight"],
-    "sizes": ["1 kg (2.2 lbs)"],
+    "flavors": [
+      "Rich Cocoa",
+      "Cafe Mocha",
+      "Mango Delight"
+    ],
+    "sizes": [
+      "1 kg (2.2 lbs)"
+    ],
     "nutritionFacts": {
       "perServing": "45g (1 scoop)",
       "protein": "30g",
@@ -759,7 +915,11 @@
         "title": "Cleanest plant protein in India with 30g protein",
         "comment": "No chalky aftertaste like typical plant powders. Digests smoothly with water and keeps me full for hours.",
         "helpfulCount": 92,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -779,10 +939,17 @@
     "calories": 110,
     "target_goal": "Fat Loss",
     "target_diet": "Vegetarian",
-    "image": "https://img4.muscleblaze.com/img/service/banner/banner_1699596357731.jpg",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToGnqEueDUKZSMWhkjLjAyysPGE9jI3-OQql2cgOKKow&s",
     "servings": 30,
-    "flavors": ["Rich Chocolate Flavor", "Gourmet Vanilla", "Cafe Mocha"],
-    "sizes": ["1 kg (2.2 lbs)", "2 kg (4.4 lbs)"],
+    "flavors": [
+      "Rich Chocolate Flavor",
+      "Gourmet Vanilla",
+      "Cafe Mocha"
+    ],
+    "sizes": [
+      "1 kg (2.2 lbs)",
+      "2 kg (4.4 lbs)"
+    ],
     "nutritionFacts": {
       "perServing": "31g (1 scoop)",
       "protein": "27g",
@@ -806,7 +973,11 @@
         "title": "Zero bloating and 27g pure isolate! Best whey in India.",
         "comment": "Regular whey gave me bloating and mild acne. Switched to MB Biozyme Isolate and stomach feels completely light. 27g protein per scoop with zero fat!",
         "helpfulCount": 118,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -826,10 +997,16 @@
     "calories": 120,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegetarian",
-    "image": "https://www.optimumnutrition.com/cdn/shop/files/on-1033230_Image_01.png?v=1756452646&width=1000",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYmmFvE0q3cRRdp4VGfPgxnOMzLJ0fibbGecs-FVNXCg&s",
     "servings": 28,
-    "flavors": ["Chocolate Supreme", "Creamy Vanilla"],
-    "sizes": ["0.9 kg (2 lbs)", "1.8 kg (4 lbs)"],
+    "flavors": [
+      "Chocolate Supreme",
+      "Creamy Vanilla"
+    ],
+    "sizes": [
+      "0.9 kg (2 lbs)",
+      "1.8 kg (4 lbs)"
+    ],
     "nutritionFacts": {
       "perServing": "33g (1 scoop)",
       "protein": "24g",
@@ -853,7 +1030,11 @@
         "title": "Keeps muscle fullness overnight during intense training cycles.",
         "comment": "Take 1 scoop 30 mins before sleep. Waking up without muscle soreness and eliminates midnight hunger cravings completely.",
         "helpfulCount": 84,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -873,10 +1054,15 @@
     "calories": 119,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegetarian",
-    "image": "https://img2.muscleblaze.com/img/service/banner/banner_1699596357731.jpg",
+    "image": "https://cdn.hyugalife.com/catalog/product/h/s/hsqa81t5_1_.jpg",
     "servings": 33,
-    "flavors": ["Unflavored Natural"],
-    "sizes": ["1 kg (2.2 lbs)", "2 kg (4.4 lbs)"],
+    "flavors": [
+      "Unflavored Natural"
+    ],
+    "sizes": [
+      "1 kg (2.2 lbs)",
+      "2 kg (4.4 lbs)"
+    ],
     "nutritionFacts": {
       "perServing": "30g (1 scoop)",
       "protein": "24g",
@@ -900,7 +1086,11 @@
         "title": "Cleanest raw whey. No fake sweetness!",
         "comment": "Verified the authenticity code on PurePro. Mixes well with milk, peanut butter, and oats. Great budget option with zero artificial additives.",
         "helpfulCount": 156,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -920,10 +1110,17 @@
     "calories": 1250,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegetarian",
-    "image": "https://www.optimumnutrition.com/cdn/shop/files/on-1033220_Image_01.png?v=1756452646&width=1000",
+    "image": "https://m.media-amazon.com/images/I/61kQxvZNaPL._AC_UF1000,1000_QL80_.jpg",
     "servings": 16,
-    "flavors": ["Chocolate", "Banana", "Vanilla"],
-    "sizes": ["1.36 kg (3 lbs)", "2.72 kg (6 lbs)"],
+    "flavors": [
+      "Chocolate",
+      "Banana",
+      "Vanilla"
+    ],
+    "sizes": [
+      "1.36 kg (3 lbs)",
+      "2.72 kg (6 lbs)"
+    ],
     "nutritionFacts": {
       "perServing": "334g (2 scoops)",
       "protein": "50g",
@@ -947,7 +1144,11 @@
         "title": "Gained 4kg clean weight in 5 weeks as a hardgainer!",
         "comment": "Had trouble eating enough calories. Taking half scoop twice daily helped me break my plateau. Verified code on the tub gave complete peace of mind.",
         "helpfulCount": 73,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -967,10 +1168,17 @@
     "calories": 110,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegan",
-    "image": "https://static.thcdn.com/images/large/webp//productimg/1600/1600/10530143-1624866292523293.jpg",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwARrvKcFWb1rtrhHKVYApF-1EM7YJgGTo6rP-L7fgcw&s=10",
     "servings": 33,
-    "flavors": ["Chocolate Smooth", "Salted Caramel", "Vanilla"],
-    "sizes": ["1 kg (2.2 lbs)", "2.5 kg (5.5 lbs)"],
+    "flavors": [
+      "Chocolate Smooth",
+      "Salted Caramel",
+      "Vanilla"
+    ],
+    "sizes": [
+      "1 kg (2.2 lbs)",
+      "2.5 kg (5.5 lbs)"
+    ],
     "nutritionFacts": {
       "perServing": "30g (1 scoop)",
       "protein": "22g",
@@ -994,7 +1202,11 @@
         "title": "Super smooth texture and vegan certified!",
         "comment": "Salted caramel flavor is delicious with oat milk. Zero dairy, zero stomach heaviness, and authentic UK batch verified on PurePro.",
         "helpfulCount": 67,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -1013,10 +1225,16 @@
     "calories": 15,
     "target_goal": "Endurance",
     "target_diet": "Vegetarian",
-    "image": "https://img2.hkrtcdn.com/20268/prd_2026721-MuscleBlaze-Pre-Workout-WrathX-1.1-lb-Fruit-Fury_o.jpg",
+    "image": "/products/prod-pre-1.jpg",
     "servings": 30,
-    "flavors": ["Fiery Orange", "Fruit Fury", "Electric Cola"],
-    "sizes": ["300g (30 Servings)"],
+    "flavors": [
+      "Fiery Orange",
+      "Fruit Fury",
+      "Electric Cola"
+    ],
+    "sizes": [
+      "300g (30 Servings)"
+    ],
     "nutritionFacts": {
       "perServing": "10g (1 scoop)",
       "protein": "0g",
@@ -1040,7 +1258,11 @@
         "title": "Laser focus without any post-workout crash",
         "comment": "EnXtra really keeps energy levels sustained for 2+ hour heavy lifting sessions. Verified batch on the tub.",
         "helpfulCount": 133,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -1059,10 +1281,16 @@
     "calories": 10,
     "target_goal": "Athletic Performance",
     "target_diet": "Vegetarian",
-    "image": "https://www.optimumnutrition.co.in/cdn/shop/files/748927055924_1.jpg?v=1773302233",
+    "image": "/products/prod-pre-2.jpg",
     "servings": 30,
-    "flavors": ["Blue Raspberry", "Watermelon Candy", "Fruit Punch"],
-    "sizes": ["330g (30 Servings)"],
+    "flavors": [
+      "Blue Raspberry",
+      "Watermelon Candy",
+      "Fruit Punch"
+    ],
+    "sizes": [
+      "330g (30 Servings)"
+    ],
     "nutritionFacts": {
       "perServing": "11g (1 scoop)",
       "protein": "0g",
@@ -1086,7 +1314,11 @@
         "title": "Clean, pure energy with authentic seal",
         "comment": "No jitters or heart palpitations. Genuine batch imported and verified on PurePro.",
         "helpfulCount": 87,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -1105,10 +1337,16 @@
     "calories": 20,
     "target_goal": "Endurance",
     "target_diet": "Vegan",
-    "image": "https://in.fastandup.com/cdn/shop/files/BCAA_Orange.png?v=1767956934&width=1000",
+    "image": "/products/prod-rec-1.jpg",
     "servings": 20,
-    "flavors": ["Watermelon", "Lime & Lemon", "Orange"],
-    "sizes": ["20 Effervescent Tablets"],
+    "flavors": [
+      "Watermelon",
+      "Lime & Lemon",
+      "Orange"
+    ],
+    "sizes": [
+      "20 Effervescent Tablets"
+    ],
     "nutritionFacts": {
       "perServing": "1 Effervescent Tablet",
       "protein": "5g (BCAA 2:1:1)",
@@ -1132,7 +1370,11 @@
         "title": "Refreshing hydration during long outdoor runs",
         "comment": "No post-run muscle cramps anymore. The effervescent fizz makes it so refreshing.",
         "helpfulCount": 76,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -1151,10 +1393,16 @@
     "calories": 25,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegetarian",
-    "image": "https://dymatize.imgix.net/production/products/Hero_Product_Line_Page_Dymatize_Website_Desktop_All9Amino_3840x2156_2024-01-16-170605_irvq.jpg?w=1000&auto=format",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp7SKvKvYGiJyZwffa5_7ByohLEC1CGJpoN7Na-coZK0iZUWyr9ECaopUA&s=10",
     "servings": 30,
-    "flavors": ["Juicy Watermelon", "Orange Cranberry", "Fruit Punch"],
-    "sizes": ["450g (30 Servings)"],
+    "flavors": [
+      "Juicy Watermelon",
+      "Orange Cranberry",
+      "Fruit Punch"
+    ],
+    "sizes": [
+      "450g (30 Servings)"
+    ],
     "nutritionFacts": {
       "perServing": "15g (1 scoop)",
       "protein": "10g (Full Spectrum EAAs)",
@@ -1178,7 +1426,11 @@
         "title": "Superior to regular BCAA powders",
         "comment": "Having all 9 essential aminos instead of just 3 makes a noticeable difference in next-day DOMS soreness.",
         "helpfulCount": 94,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -1197,10 +1449,15 @@
     "calories": 240,
     "target_goal": "Muscle Gain",
     "target_diet": "Vegetarian",
-    "image": "https://img8.hkrtcdn.com/28812/prd_2881147-MuscleBlaze-High-Protein-Oats-Dark-Chocolate-1-kg_o.jpg",
+    "image": "/products/prod-meal-1.jpg",
     "servings": 20,
-    "flavors": ["Dark Chocolate Oats", "Berry Blast"],
-    "sizes": ["1 kg (20 Servings)"],
+    "flavors": [
+      "Dark Chocolate Oats",
+      "Berry Blast"
+    ],
+    "sizes": [
+      "1 kg (20 Servings)"
+    ],
     "nutritionFacts": {
       "perServing": "50g (1 scoop)",
       "protein": "22g",
@@ -1224,7 +1481,11 @@
         "title": "Saves 20 minutes every morning",
         "comment": "Nutritious breakfast ready in 60 seconds with cold milk. Taste is phenomenal and keeps hunger at bay until lunch.",
         "helpfulCount": 81,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   },
@@ -1243,10 +1504,15 @@
     "calories": 220,
     "target_goal": "General Fitness",
     "target_diet": "Vegan",
-    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
+    "image": "/products/prod-meal-2.jpg",
     "servings": 20,
-    "flavors": ["Vanilla Bean", "Natural Chocolate"],
-    "sizes": ["1 kg"],
+    "flavors": [
+      "Vanilla Bean",
+      "Natural Chocolate"
+    ],
+    "sizes": [
+      "1 kg"
+    ],
     "nutritionFacts": {
       "perServing": "60g",
       "protein": "24g",
@@ -1270,7 +1536,11 @@
         "title": "Cleanest meal shake on the market",
         "comment": "Certified vegan with authentic seal. Keeps energy steady without any blood sugar spikes.",
         "helpfulCount": 59,
-        "ratingAttributes": { "effectiveness": 5, "quality": 5, "packaging": 5 }
+        "ratingAttributes": {
+          "effectiveness": 5,
+          "quality": 5,
+          "packaging": 5
+        }
       }
     ]
   }
